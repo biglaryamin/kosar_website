@@ -1,0 +1,67 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block main %}
+<!-- Page Header -->
+<header class="masthead" style="background-image:url('{% static "img/uni2.jpg" %}')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1 style=" font-family:'Sahel'">سامانه اساتید</h1>
+                    <h6 style=" font-family:'Sahel'">دانشگاه هوایی شهید ستاری</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            {% block header %}
+
+            {% endblock %}
+
+            {% for article in object_list %}
+            <div class="post-preview">
+                <a href="{% url 'blog:detail' article.slug %}">
+                    <h2 class="post-title">
+                        <p style=" font-family:'Sahel'">{{article.title}}</p>
+                    </h2>
+                    <h3 style=" font-family:'Sahel'" class="post-subtitle">
+                        {{article.description|safe|truncatewords:40}}
+                    </h3>
+                </a>
+                <p class="post-meta">نوشته شده توسط
+                    <a href="{% url 'blog:author' article.author %}">{{ article.author.get_full_name }}</a>
+                    {{article.jpublish}}</p>
+                <div>
+                    {% for cat in article.category.active %}
+                    <a href="{% url 'blog:category' cat.slug %}">#{{cat.title}}</a>
+                    {% endfor %}
+                </div>
+            </div>
+
+            {% endfor %}
+            <!-- Pager -->
+            <!-- Pager -->
+            {% if is_paginated %}
+                <div class="clearfix pager-botton">
+                    {% if page_obj.has_previous %}
+                    <a class="btn btn-primary float-right ml-3"
+                        href="{% block previous_page_url %}{% endblock %}">پست های جدید &rarr;</a>
+                    {% endif %}
+                    {% if page_obj.has_next %}
+                    <a class="btn btn-primary float-right "
+                        href="{% block next_page_url %}{% endblock %}">پست های قدیمی &larr;</a>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title %}
+نظرسنجی 
+{% endblock %}
+{% block main %}
+<head>
+    <style>
+ul.more-ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li.more-li {
+  float: left;
+}
+
+li.more-li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: grey;
+}
+    </style>
+</head>
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">نظرسنجی های موجود</h4>
+            <ul class="more-ul">
+                <li class="more-li"><a class="active" href="{% url 'poll:home' %}">خانه</a></li>
+                {% if user.is_superuser %}
+                <li class="more-li"><a href="{% url 'poll:create' %}">ایجاد</a></li>
+                {% endif %}
+            </ul>
+            </div>
+            <ul class="list-group">
+                {% for poll in polls %}
+                <li class="list-group-item">
+                    <strong>{{ poll.question }}</strong>
+                    <span>
+                        <a href="{% url 'poll:vote' poll.id %}" class="btn btn-info btn-xs">رای</a> &nbsp;
+                        <a href="{% url 'poll:results' poll.id %}" class="btn btn-default btn-xs">نمایش نتایج</a> &nbsp;
+                    </span>
+                </li>
+                {% endfor %}
+            </ul>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+

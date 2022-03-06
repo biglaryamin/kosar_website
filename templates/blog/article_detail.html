@@ -1,0 +1,36 @@
+{% extends 'blog/base.html' %}
+{% block title %} |{{object.title}} {% endblock %}
+{% block main %}
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{object.thumbnail.url}}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1 style="font-family: Sahel">{{object.title}}</h1>
+            <time>{{object.jpublish}}</time>
+          </div>
+        </div>
+      </div>
+    </div>
+    <style>
+      header.masthead .site-heading h1{
+        font-size:40px ;
+      }
+
+
+    </style>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto text-justify">
+            {{article.description|safe}}
+        </div>
+      </div>
+    </div>
+  </article>
+  {% endblock %}

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}نظرسنجی{% endblock %}
+{% block main %}
+<head>
+    <style>
+        ul.more-ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        li.more-li {
+            float: left;
+        }
+
+        li.more-li a {
+            display: block;
+            color: black;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: grey;
+        }
+    </style>
+</head>
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">نتایج نظرسنجی</h4>
+                <ul class="more-ul">
+                    <li class="more-li"><a class="active" href="{% url 'poll:home' %}">خانه</a></li>
+                    {% if user.is_superuser %}
+                    <li class="more-li"><a href="{% url 'poll:create' %}">ایجاد</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="panel-body">
+                <h3>{{ poll.question }}</h3>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item">{{ poll.option_one }} &mdash; <strong>{{ poll.option_one_count }}</strong></li>
+                <li class="list-group-item">{{ poll.option_two }} &mdash; <strong>{{ poll.option_two_count }}</strong></li>
+                <li class="list-group-item">{{ poll.option_three }} &mdash; <strong>{{ poll.option_three_count }}</strong></li>
+            </ul>
+            <div class="panel-footer">
+                مجموع &mdash; <strong>{{ poll.total }}</strong>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

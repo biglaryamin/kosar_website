@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block title %}نظرسنجی{% endblock %}
+{% block main %}
+<head>
+    <style>
+        ul.more-ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        li.more-li {
+            float: left;
+        }
+
+        li.more-li a {
+            display: block;
+            color: black;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: grey;
+        }
+    </style>
+</head>
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <ul class="more-ul">
+                    <li class="more-li"><a class="active" href="{% url 'poll:home' %}">خانه</a></li>
+                        {% if user.is_superuser %}
+                        <li class="more-li"><a href="{% url 'poll:create' %}">ایجاد</a></li>
+                        {% endif %}
+                </ul>
+            </div>
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2>{{ poll.question }}</h2>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <hr />
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="poll" value="option1" required>
+                                        {{ poll.option_one }}
+                                    </label> &nbsp;
+                                    <label>
+                                        <input type="radio" name="poll" value="option2">
+                                        {{ poll.option_two }}
+                                    </label> &nbsp;
+                                    <label>
+                                        <input type="radio" name="poll" value="option3">
+                                        {{ poll.option_three }}
+                                    </label> &nbsp;
+                                </div>
+                            </div>
+                            
+                            <hr />
+
+                            <button type="submit" class="btn btn-info">
+                                ارسال
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
