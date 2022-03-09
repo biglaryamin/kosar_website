@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Article,Category
+from .models import Article,Category,Comment
 
 def make_published(modeladmin, request , queryset):
     rows_update =queryset.update(status='p')
@@ -45,3 +45,6 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Category,CategoryAdmin)
+
+
+admin.site.register(Comment)

@@ -19,7 +19,6 @@
         font-size:40px ;
       }
 
-
     </style>
   </header>
 
@@ -33,4 +32,25 @@
       </div>
     </div>
   </article>
+  
+
+  <!--Comments-->
+  <div>
+    <h3 style="text-align: right ; margin-right: auto;">کامنت ها</h3>
+    <br/>
+    {% if not article.comments.all %}
+      <p>فعلا کامنتی نیست</p>
+    {% else %}
+      {% for comment in article.comments.all %}
+        <strong>
+        {{ comment.name }} - {{ comment.date_added }}
+        </strong>
+        <br/>
+        {{ comment.body }}
+      <br/>
+      <hr/>
+      {% endfor %}
+    {% endif %}
+  </div>
+
   {% endblock %}

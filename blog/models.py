@@ -1,3 +1,4 @@
+from datetime import date
 from django.db import models
 from django.urls import reverse
 from django.utils.html import format_html
@@ -66,6 +67,24 @@ class Article(models.Model):
 
 
     objects=ArticleManager()
+
+
+
+class Comment(models.Model):
+    article=models.ForeignKey(Article , on_delete=models.CASCADE , related_name="comments" , verbose_name="مقاله")
+    name=models.CharField(max_length=255, verbose_name="نام")
+    body=models.TextField(verbose_name="متن")
+    date_added=models.DateTimeField(auto_now_add=True , verbose_name="زمان نوشتن")
+
+    class Meta:
+        verbose_name="کامنت"
+        verbose_name_plural="کامنت ها"
+        ordering=['date_added']
+
+    def __str__(self) -> str:
+        return f"{self.body} | {self.name}"
+
+
 
 
 class Category(models.Model):
