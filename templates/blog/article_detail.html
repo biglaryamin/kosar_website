@@ -1,6 +1,8 @@
 {% extends 'blog/base.html' %}
 {% block title %} |{{object.title}} {% endblock %}
 {% block main %}
+{% load crispy_forms_tags %}
+
   <!-- Page Header -->
   <header class="masthead" style="background-image: url('{{object.thumbnail.url}}')">
     <div class="overlay"></div>
@@ -51,6 +53,11 @@
       <hr/>
       {% endfor %}
     {% endif %}
+    <br/>
+    <form method="POST">
+      {% csrf_token %}
+      {{comment_form.as_p}}
+      <input type="submit" value="Submit">
+    </form>
   </div>
-
   {% endblock %}

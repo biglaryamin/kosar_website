@@ -1,9 +1,17 @@
+from dataclasses import fields
+from multiprocessing import context
 from django.shortcuts import render, get_object_or_404 
 from .models import Article,Category
 from account.models import User
 from django.http import HttpResponse,Http404
 from django.core.paginator import Paginator
 from django.views.generic import ListView,DetailView
+from .forms import CommentForm
+from .models import Comment
+from django.shortcuts import redirect
+from django.views.generic.edit import CreateView
+from .forms import CommentForm
+
 
 '''
 def home(request, page=1):
@@ -31,10 +39,48 @@ def detail(request,slug):
 	}
 	return render(request,"blog/detail.html",context)'''
 
-class ArticleDetail(DetailView):
-	def get_object(self):
-		slug=self.kwargs.get('slug')
-		return get_object_or_404(Article.objects.published(), slug=slug)
+# class ArticleDetail(DetailView):
+# 	def get_object(self):
+# 		slug=self.kwargs.get('slug')
+# 		return get_object_or_404(Article.objects.published(), slug=slug)
+
+
+def show_article_detail(request , slug):
+	cf = CommentForm(request.POST or None)
+	if request.method == 'POST':
+		if cf.is_valid():
+			content = request.POST.get('content')
+			comment = Comment.objects.create(post = Article, user = request.user, content = content)
+			comment.save()
+		else:
+			cf = CommentForm()
+
+	context={
+		"article":get_object_or_404(Article.objects.published() , slug=slug),
+		'comment_form':cf,
+	}
+	return render(request , "blog/article_detail.html" , context)
+
+
+
+def comment_save_view(request, id):
+	print("this is running&&&&&&&&&&$$$$")
+	if request.method == 'POST':
+		cf = CommentForm(request.POST or None)
+		if cf.is_valid():
+			content = request.POST.get('content')
+			comment = Comment.objects.create(post = Article, user = request.user, content = content)
+			comment.save()
+			return redirect(Article.get_absolute_url())
+		else:
+			cf = CommentForm()
+		
+		context ={
+		'comment_form':cf,
+		}
+		return render(request, 'blog/detail.html', context)
+	
+
 
 '''
 def category(request, slug ,page=1):
@@ -79,3 +125,7 @@ class AuthorList(ListView):
 		context=super().get_context_data(**kwargs)
 		context['author']=author
 		return context
+
+
+
+
