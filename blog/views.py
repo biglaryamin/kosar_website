@@ -8,7 +8,7 @@ from django.core.paginator import Paginator
 from django.views.generic import ListView,DetailView
 from .forms import CommentForm
 from .models import Comment
-from django.shortcuts import redirect
+from django.shortcuts import redirect,HttpResponseRedirect
 from django.views.generic.edit import CreateView
 from .forms import CommentForm
 
@@ -46,12 +46,15 @@ def detail(request,slug):
 
 
 def show_article_detail(request , slug):
+	print(f"this is slug ==================== {slug}")
 	cf = CommentForm(request.POST or None)
 	if request.method == 'POST':
 		if cf.is_valid():
-			content = request.POST.get('content')
-			comment = Comment.objects.create(post = Article, user = request.user, content = content)
+			comment = cf.save(commit=False)
+			comment.article=get_object_or_404(Article.objects.all() , slug=slug)
+			comment.user=request.user
 			comment.save()
+			return HttpResponseRedirect(f"http://127.0.0.1:8000/article/{slug}")
 		else:
 			cf = CommentForm()
 
@@ -63,22 +66,22 @@ def show_article_detail(request , slug):
 
 
 
-def comment_save_view(request, id):
-	print("this is running&&&&&&&&&&$$$$")
-	if request.method == 'POST':
-		cf = CommentForm(request.POST or None)
-		if cf.is_valid():
-			content = request.POST.get('content')
-			comment = Comment.objects.create(post = Article, user = request.user, content = content)
-			comment.save()
-			return redirect(Article.get_absolute_url())
-		else:
-			cf = CommentForm()
+# def comment_save_view(request, id):
+# 	print("this is running&&&&&&&&&&$$$$")
+# 	if request.method == 'POST':
+# 		cf = CommentForm(request.POST or None)
+# 		if cf.is_valid():
+# 			content = request.POST.get('content')
+# 			comment = Comment.objects.create(post = Article, user = request.user, content = content)
+# 			comment.save()
+# 			return redirect(Article.get_absolute_url())
+# 		else:
+# 			cf = CommentForm()
 		
-		context ={
-		'comment_form':cf,
-		}
-		return render(request, 'blog/detail.html', context)
+# 		context ={
+# 		'comment_form':cf,
+# 		}
+# 		return render(request, 'blog/detail.html', context)
 	
 
 

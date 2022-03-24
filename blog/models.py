@@ -71,10 +71,11 @@ class Article(models.Model):
 
 
 class Comment(models.Model):
-    article=models.ForeignKey(Article , on_delete=models.CASCADE , related_name="comments" , verbose_name="مقاله")
-    name=models.CharField(max_length=255, verbose_name="نام")
-    body=models.TextField(verbose_name="متن")
-    date_added=models.DateTimeField(auto_now_add=True , verbose_name="زمان نوشتن")
+    user=models.ForeignKey(User,null=True,on_delete=models.SET_NULL,verbose_name='یوزر' , blank=True)
+    article=models.ForeignKey(Article , on_delete=models.CASCADE , related_name="comments" , verbose_name="مقاله" , null=True , blank=True)
+    name=models.CharField(max_length=255, verbose_name="نام" , null=True , blank=True)
+    body=models.TextField(verbose_name="متن" , null=True , blank=True)
+    date_added=models.DateTimeField(auto_now_add=True , verbose_name="زمان نوشتن" , null=True , blank=True)
 
     class Meta:
         verbose_name="کامنت"
