@@ -69,12 +69,11 @@ class Article(models.Model):
     objects=ArticleManager()
 
 
-
 class Comment(models.Model):
-    user=models.ForeignKey(User,null=True,on_delete=models.SET_NULL,verbose_name='یوزر' , blank=True)
+    user=models.ForeignKey(User , blank=True , null=True,on_delete=models.SET_NULL,verbose_name='یوزر')
     article=models.ForeignKey(Article , on_delete=models.CASCADE , related_name="comments" , verbose_name="مقاله" , null=True , blank=True)
-    name=models.CharField(max_length=255, verbose_name="نام" , null=True , blank=True)
-    body=models.TextField(verbose_name="متن" , null=True , blank=True)
+    name=models.CharField(max_length=255, verbose_name="نام" , blank=False , null=False)
+    body=models.TextField(verbose_name="متن" , blank=False , null=False)
     date_added=models.DateTimeField(auto_now_add=True , verbose_name="زمان نوشتن" , null=True , blank=True)
 
     class Meta:

@@ -1,6 +1,5 @@
-from dataclasses import fields
-from multiprocessing import context
-from django.shortcuts import render, get_object_or_404 
+from django.contrib.auth import get_user_model
+from django.shortcuts import render, get_object_or_404 ,get_list_or_404
 from .models import Article,Category
 from account.models import User
 from django.http import HttpResponse,Http404
@@ -46,13 +45,16 @@ def detail(request,slug):
 
 
 def show_article_detail(request , slug):
-	print(f"this is slug ==================== {slug}")
+	User=get_user_model()
+	users=User.objects.all()
+
 	cf = CommentForm(request.POST or None)
 	if request.method == 'POST':
 		if cf.is_valid():
 			comment = cf.save(commit=False)
 			comment.article=get_object_or_404(Article.objects.all() , slug=slug)
-			comment.user=request.user
+			if request.user in users:
+				comment.user=request.user
 			comment.save()
 			return HttpResponseRedirect(f"http://127.0.0.1:8000/article/{slug}")
 		else:

@@ -11,7 +11,6 @@ class User(AbstractUser):
 	thumbnail   =models.ImageField(upload_to="images", default='/img/default.jpg' , null=True, blank=True , verbose_name="تصویر")
 
 
-
 	def is_special_user(self):
 		if self.special_user > timezone.now():
 			return True
