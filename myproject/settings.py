@@ -41,11 +41,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
+    'presentation_app',
     'account.apps.AccountConfig',
     'extensions',
     'widget_tweaks',
     'crispy_forms',
     'poll.apps.PollConfig',
+
 ]
 
 MIDDLEWARE = [

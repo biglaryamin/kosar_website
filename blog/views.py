@@ -130,7 +130,3 @@ class AuthorList(ListView):
 		context=super().get_context_data(**kwargs)
 		context['author']=author
 		return context
-
-
-
-
