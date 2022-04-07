@@ -1,5 +1,5 @@
 from django.contrib.auth import get_user_model
-from django.shortcuts import render, get_object_or_404 ,get_list_or_404
+from django.shortcuts import render, get_object_or_404
 from .models import Article,Category
 from account.models import User
 from django.http import HttpResponse,Http404
@@ -25,10 +25,16 @@ def home(request, page=1):
 
 class ArticleList(ListView):
 #	model=Article
-#	template_name="blog/home.html"
+	template_name="blog/blog.html"
 #	context_object_name="articles"
 	queryset     	   =Article.objects.published()
 	paginate_by  	   =3
+
+	def get_context_data(self,**kwargs):
+		context = super(ArticleList,self).get_context_data(**kwargs)
+		context['last_three_articles'] = Article.objects.published().order_by('-publish')[0:3]
+		return context
+
 
 
 '''
@@ -45,26 +51,47 @@ def detail(request,slug):
 
 
 def show_article_detail(request , slug):
-	User=get_user_model()
-	users=User.objects.all()
-
-	cf = CommentForm(request.POST or None)
+	the_article=get_object_or_404(Article , slug=slug)
+	print(f"All comment is ############## ===> {the_article.comments.all().count()}")
+	print(f" the article is {the_article} *************")
 	if request.method == 'POST':
-		if cf.is_valid():
-			comment = cf.save(commit=False)
-			comment.article=get_object_or_404(Article.objects.all() , slug=slug)
-			if request.user in users:
-				comment.user=request.user
-			comment.save()
-			return HttpResponseRedirect(f"http://127.0.0.1:8000/article/{slug}")
+		MyCommentForm=CommentForm(request.POST or None)
+		if MyCommentForm.is_valid():
+			mc=MyCommentForm.save(commit=False)	
+			mc.article=get_object_or_404(Article.objects.all() , slug=slug)
+			mc.save()
 		else:
-			cf = CommentForm()
+			MyCommentForm=CommentForm(request.POST or None)
 
 	context={
 		"article":get_object_or_404(Article.objects.published() , slug=slug),
-		'comment_form':cf,
 	}
-	return render(request , "blog/article_detail.html" , context)
+	return render(request , "blog/blog-details.html" , context)
+
+
+
+
+# def show_article_detail(request , slug):
+# 	User=get_user_model()
+# 	users=User.objects.all()
+
+# 	cf = CommentForm(request.POST or None)
+# 	if request.method == 'POST':
+# 		if cf.is_valid():
+# 			comment = cf.save(commit=False)
+# 			comment.article=get_object_or_404(Article.objects.all() , slug=slug)
+# 			if request.user in users:
+# 				comment.user=request.user
+# 			comment.save()
+# 			return HttpResponseRedirect(f"http://127.0.0.1:8000/article/{slug}")
+# 		else:
+# 			cf = CommentForm()
+
+# 	context={
+# 		"article":get_object_or_404(Article.objects.published() , slug=slug),
+# 		'comment_form':cf,
+# 	}
+# 	return render(request , "blog/blog-details.html" , context)
 
 
 
@@ -99,6 +126,7 @@ def category(request, slug ,page=1):
 	}
 	return render(request,"blog/category.html",context)'''
 
+
 class CategoryList(ListView):
 	paginate_by = 3
 	template_name='blog/category_list.html'
@@ -130,3 +158,11 @@ class AuthorList(ListView):
 		context=super().get_context_data(**kwargs)
 		context['author']=author
 		return context
+
+
+def show_contact_page(request):
+	return render(request, "blog/contact.html" )
+
+
+def show_base_page(request):
+	return render(request, "blog/base.html" )

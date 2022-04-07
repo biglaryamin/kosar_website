@@ -1,0 +1,110 @@
+﻿{% extends 'blog/base.html' %}
+{% load static %}
+{% block header_name %}
+تماس با ما
+{% endblock %}
+{% block after_home %}
+تماس با ما
+{% endblock %}
+{% block content %}
+    <!-- Start Contact Area -->
+    <div class="contact-area ptb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-6">
+                    <div class="contact-form-wrap">
+                        <h3>پیام بگذارید</h3>
+
+                        <form id="contactForm">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="form-group">
+                                        <label>نام</label>
+                                        <input type="text" name="name" id="name" class="form-control" required data-error="لطفا نام خود را وارد کنید">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+        
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="form-group">
+                                        <label>ایمیل</label>
+                                        <input type="email" name="email" id="email" class="form-control" required data-error="لطفا ایمیل خود را وارد کنید">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+        
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="form-group">
+                                        <label>تلفن</label>
+                                        <input type="text" name="phone_number" id="phone_number" required data-error="لطفا تلفن خود را وارد کنید" class="form-control">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+        
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="form-group">
+                                        <label>موضوع</label>
+                                        <input type="text" name="msg_subject" id="msg_subject" class="form-control" required data-error="لطفا موضوع خود را وارد کنید">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+        
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="form-group">
+                                        <label>پیام شما</label>
+                                        <textarea name="message" class="form-control" id="message" cols="30" rows="6" required data-error="پیام خود را بنویسید"></textarea>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+        
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="send-btn">
+                                        <button type="submit" class="default-btn">ارسال پیام</button>
+                                    </div>
+                                    <div id="msgSubmit" class="h3 text-center hidden"></div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-md-6">
+                    <div class="contact-support">
+                        <h3>پشتیبانی مشتری</h3>
+                        <span>به کمک نیاز دارید؟ با ما در تماس باشید.</span>
+
+                        <ul class="information">
+                            <li><i class="ri-map-pin-fill"></i> ایران، استان تهران، میدان آزادی، خیابان 16 شرقی</li>
+                            <li><i class="ri-phone-fill"></i> <a href="tel:15143125678">+1 (514) 312-5678</a></li>
+                            <li><i class="ri-mail-line"></i> <a href="mailto: hello@kadi.com">hello@kadi.com</a></li>
+                        </ul>
+                        <ul class="social">
+                            <li><span>اشتراک گذاری:</span></li>
+                            <li><a href="https://www.facebook.com/" target="_blank"><i class="ri-facebook-line"></i></a></li>
+                            <li><a href="https://twitter.com/" target="_blank"><i class="ri-twitter-fill"></i></a></li>
+                            <li><a href="https://www.instagram.com/" target="_blank"><i class="ri-instagram-fill"></i></a></li>
+                            <li><a href="https://www.linkedin.com/" target="_blank"><i class="ri-linkedin-fill"></i></a></li>
+                        </ul>
+
+                        <div class="working-hours">
+                            <h4>ساعت کاری</h4>
+
+                            <ul class="list">
+                                <li>شنبه - دوشنبه: <span>9:00 صبح - 9:00 شب</span></li>
+                                <li>یکشنبه: <span>بسته</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Contact Area -->
+
+    <!-- Start Map -->
+    <div id="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27515.757526356814!2d-91.1452334876133!3d30.451131827046307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8626a3e7cac4ea25%3A0x36f5316e809ebea7!2sBaton%20Rouge%2C%20LA%2070806%2C%20USA!5e0!3m2!1sen!2sbd!4v1628685472859!5m2!1sen!2sbd"></iframe>
+    </div>
+    <!-- End Map -->
+{% endblock %}

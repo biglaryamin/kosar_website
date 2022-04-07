@@ -1,0 +1,181 @@
+﻿{% extends 'blog/base.html' %}
+{% load static %}
+{% block header_name %}
+محصولات
+{% endblock %}
+{% block after_home %}
+محصولات
+{% endblock %}
+{% block content %}
+
+        <!-- Start Services Area -->
+        <div class="services-area bg-transparent pt-100 pb-100">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <div class="row align-items-center">
+                        <div class="col-lg-7">
+                            <span>خدمات ما</span>
+                            <h2>تمام خدماتی که ما به مشتریان کادی ارائه می دهیم</h2>
+                        </div>
+
+                        <div class="col-lg-5">
+                            <p>لورم ایپسوم به سادگی ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم به مدت 40 سال استاندارد صنعت بوده است.لورم ایپسوم به سادگی ساختار چاپ و متن را در بر می گیرد.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-6 services-more-item">
+                        <div class="single-services-card">
+                            <a href="{% url 'presentation_blog:service-detail' %}"><img src="{% static 'temp/images/services/services-1.jpg' %}" alt="image"></a>
+                            <div class="services-content">
+                                <h3>
+                                    <a href="services-details.html">نصب سیستم تهویه هوا</a>
+                                </h3>
+                                <a href="services-details.html" class="add-icon"><i class="ri-add-line"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 services-more-item">
+                        <div class="single-services-card">
+                            <a href="{% url 'presentation_blog:service-detail' %}"><img src="{% static 'temp/images/services/services-2.jpg' %}" alt="image"></a>
+                            <div class="services-content">
+                                <h3>
+                                    <a href="{% url 'presentation_blog:service-detail' %}">نگهداری دستگاه تهویه</a>
+                                </h3>
+                                <a href="{% url 'presentation_blog:service-detail' %}" class="add-icon"><i class="ri-add-line"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 services-more-item">
+                        <div class="single-services-card">
+                            <a href="{% url 'presentation_blog:service-detail' %}"><img src="{% static 'temp/images/services/services-3.jpg' %}" alt="image"></a>
+                            <div class="services-content">
+                                <h3>
+                                    <a href="{% url 'presentation_blog:service-detail' %}">نصب دستگاه تهویه</a>
+                                </h3>
+                                <a href="{% url 'presentation_blog:service-detail' %}" class="add-icon"><i class="ri-add-line"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 services-more-item">
+                        <div class="single-services-card">
+                            <a href="{% url 'presentation_blog:service-detail' %}"><img src="{% static 'temp/images/services/services-4.jpg' %}" alt="image"></a>
+                            <div class="services-content">
+                                <h3>
+                                    <a href="{% url 'presentation_blog:service-detail' %}">سیستم های تهویه</a>
+                                </h3>
+                                <a href="{% url 'presentation_blog:service-detail' %}" class="add-icon"><i class="ri-add-line"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 services-more-item">
+                        <div class="single-services-card">
+                            <a href="{% url 'presentation_blog:service-detail' %}"><img src="{% static 'temp/images/services/services-5.jpg' %}" alt="image"></a>
+                            <div class="services-content">
+                                <h3>
+                                    <a href="{% url 'presentation_blog:service-detail' %}">نصب سیستم تهویه</a>
+                                </h3>
+                                <a href="{% url 'presentation_blog:service-detail' %}" class="add-icon"><i class="ri-add-line"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 services-more-item">
+                        <div class="single-services-card">
+                            <a href="{% url 'presentation_blog:service-detail' %}"><img src="{% static 'temp/images/services/services-6.jpg' %}" alt="image"></a>
+                            <div class="services-content">
+                                <h3>
+                                    <a href="#">تعمیر و نگهداری</a>
+                                </h3>
+                                <a href="{% url 'presentation_blog:service-detail' %}" class="add-icon"><i class="ri-add-line"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 services-more-item">
+                        <div class="single-services-card">
+                            <a href="{% url 'presentation_blog:service-detail' %}"><img src="{% static 'temp/images/services/services-1.jpg' %}" alt="image"></a>
+                            <div class="services-content">
+                                <h3>
+                                    <a href="{% url 'presentation_blog:service-detail' %}">تعمیر دستگاه</a>
+                                </h3>
+                                <a href="{% url 'presentation_blog:service-detail' %}" class="add-icon"><i class="ri-add-line"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 services-more-item">
+                        <div class="single-services-card">
+                            <a href="{% url 'presentation_blog:service-detail' %}"><img src="{% static 'temp/images/services/services-2.jpg' %}" alt="image"></a>
+                            <div class="services-content">
+                                <h3>
+                                    <a href="{% url 'presentation_blog:service-detail' %}">سیستم تهویه مطبوع</a>
+                                </h3>
+                                <a href="{% url 'presentation_blog:service-detail' %}" class="add-icon"><i class="ri-add-line"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 services-more-item">
+                        <div class="single-services-card">
+                            <a href="{% url 'presentation_blog:service-detail' %}"><img src="{% static 'temp/images/services/services-3.jpg' %}" alt="image"></a>
+                            <div class="services-content">
+                                <h3>
+                                    <a href="{% url 'presentation_blog:service-detail' %}">نصب سیستم تهویه</a>
+                                </h3>
+                                <a href="{% url 'presentation_blog:service-detail' %}" class="add-icon"><i class="ri-add-line"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 services-more-item">
+                        <div class="single-services-card">
+                            <a href="{% url 'presentation_blog:service-detail' %}"><img src="{% static 'temp/images/services/services-4.jpg' %}" alt="image"></a>
+                            <div class="services-content">
+                                <h3>
+                                    <a href="{% url 'presentation_blog:service-detail' %}">نصب دستگاه تهویه</a>
+                                </h3>
+                                <a href="{% url 'presentation_blog:service-detail' %}" class="add-icon"><i class="ri-add-line"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 services-more-item">
+                        <div class="single-services-card">
+                            <a href="{% url 'presentation_blog:service-detail' %}"><img src="{% static 'temp/images/services/services-5.jpg' %}" alt="image"></a>
+                            <div class="services-content">
+                                <h3>
+                                    <a href="{% url 'presentation_blog:service-detail' %}">نصب فوری قطعات</a>
+                                </h3>
+                                <a href="{% url 'presentation_blog:service-detail' %}" class="add-icon"><i class="ri-add-line"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 services-more-item">
+                        <div class="single-services-card">
+                            <a href="{% url 'presentation_blog:service-detail' %}"><img src="{% static 'temp/images/services/services-6.jpg' %}" alt="image"></a>
+                            <div class="services-content">
+                                <h3>
+                                    <a href="{% url 'presentation_blog:service-detail' %}">نگهداری دستگاه تهویه</a>
+                                </h3>
+                                <a href="{% url 'presentation_blog:service-detail' %}" class="add-icon"><i class="ri-add-line"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="load-more-btn">
+                    <a href="#" id="loadmore" class="default-btn">مشاهده بیشتر</a>
+                </div>
+            </div>
+        </div>
+        <!-- End Services Area -->
+
+
+{% endblock %}

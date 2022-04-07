@@ -1,0 +1,359 @@
+﻿{% extends 'blog/base.html' %}
+{% load static %}
+{% block header_name %}
+محصولات
+{% endblock %}
+{% block after_home %}
+محصولات
+{% endblock %}
+{% block content %}
+
+
+        <!-- Start Single Shop Area -->
+        <div class="single-shop-area ptb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="single-shop-image-tabs">
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="image-1" role="tabpanel">
+                                    <img src="{% static 'temp/images/shop/shop-1.png' %}" alt="image">
+                                </div>
+        
+                                <div class="tab-pane fade" id="image-2" role="tabpanel">
+                                    <img src="{% static 'temp/images/shop/shop-2.png' %}" alt="image">
+                                </div>
+        
+                                <div class="tab-pane fade" id="image-3" role="tabpanel">
+                                    <img src="{% static 'temp/images/shop/shop-3.png' %}" alt="image">
+                                </div>
+        
+                                <div class="tab-pane fade" id="image-4" role="tabpanel">
+                                    <img src="{% static 'temp/images/shop/shop-4.png' %}" alt="image">
+                                </div>
+                            </div>
+
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="image-1-tab" data-bs-toggle="tab" href="#image-1" role="tab" aria-controls="image-1">
+                                        <img src="{% static 'temp/images/shop/shop-1.png' %}" alt="image">
+                                    </a>
+                                </li>
+        
+                                <li class="nav-item">
+                                    <a class="nav-link" id="image-2-tab" data-bs-toggle="tab" href="#image-2" role="tab" aria-controls="image-2">
+                                        <img src="{% static 'temp/images/shop/shop-2.png' %}" alt="image">
+                                    </a>
+                                </li>
+        
+                                <li class="nav-item">
+                                    <a class="nav-link" id="image-3-tab" data-bs-toggle="tab" href="#image-3" role="tab" aria-controls="image-3">
+                                        <img src="{% static 'temp/images/shop/shop-3.png' %}" alt="image">
+                                    </a>
+                                </li>
+        
+                                <li class="nav-item">
+                                    <a class="nav-link" id="image-4-tab" data-bs-toggle="tab" href="#image-4" role="tab" aria-controls="image-4">
+                                        <img src="{% static 'temp/images/shop/shop-4.png' %}" alt="image">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-12">
+                        <div class="products-details-desc">
+                            <h3>دستگاه تصفیه هوا قابل حمل</h3>
+
+                            <div class="price">1900 تومان</div>
+
+                            <div class="products-review">
+                                <div class="rating">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                </div>
+                            </div>
+
+                            <p>لورم ایپسوم به سادگی ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم به مدت 40 سال استاندارد صنعت بوده است.لورم ایپسوم به سادگی ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم به مدت 40 سال استاندارد صنعت بوده است. لورم ایپسوم به سادگی ساختار چاپ و متن را در بر می گیرد.</p>
+
+                            <div class="products-add-to-cart">
+                                <span>تعداد:</span>
+                                <div class="input-counter">
+                                    <span class="minus-btn"><i class="ri-subtract-line"></i></span>
+                                    <input type="text" min="1" value="1">
+                                    <span class="plus-btn"><i class="ri-add-line"></i></span>
+                                </div>
+                                <button type="submit" class="default-btn">افزودن سبد خرید</button>
+                            </div>
+
+                            <div class="products-meta">
+                                <span>کد: <span class="sku">10</span></span>
+                                <span>دسترسی: <span class="in-stock">موجود در انبار</span></span>
+                                <span>دسته بندی: <a href="#">کسب و کار</a></span>
+                                <span>برچسب: <a href="#">سیستم تهویه</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="products-details-tabs">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item"><a class="nav-link active" id="description-tab" data-bs-toggle="tab" href="#description" role="tab" aria-controls="description">توضیحات</a></li>
+                        <li class="nav-item"><a class="nav-link" id="reviews-tab" data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="reviews">نظرات (2)</a></li>
+                    </ul>
+
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="description" role="tabpanel">
+                            <p>لورم ایپسوم به سادگی ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم به مدت 40 سال استاندارد صنعت بوده است.لورم ایپسوم به سادگی ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم به مدت 40 سال استاندارد صنعت بوده است. لورم ایپسوم به سادگی ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم به مدت 40 سال استاندارد صنعت بوده است.لورم ایپسوم به سادگی ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم به مدت 40 سال استاندارد صنعت بوده است.</p>
+                            <p>لورم ایپسوم به سادگی ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم به مدت 40 سال استاندارد صنعت بوده است.لورم ایپسوم به سادگی ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم به مدت 40 سال استاندارد صنعت بوده است.</p>
+                        </div>
+
+                        <div class="tab-pane fade" id="reviews" role="tabpanel">
+                            <div class="products-reviews">
+                                <h3>رتبه بندی محصولات</h3>
+                                <div class="rating">
+                                    <span class="ri-star-fill checked"></span>
+                                    <span class="ri-star-fill checked"></span>
+                                    <span class="ri-star-fill checked"></span>
+                                    <span class="ri-star-fill checked"></span>
+                                    <span class="ri-star-fill"></span>
+                                </div>
+                                <div class="rating-count">
+                                    <span>4.1 میانگین بر اساس 4 بررسی.</span>
+                                </div>
+                                <div class="row">
+                                    <div class="side">
+                                        <div>5 ستاره</div>
+                                    </div>
+                                    <div class="middle">
+                                        <div class="bar-container">
+                                            <div class="bar-5"></div>
+                                        </div>
+                                    </div>
+                                    <div class="side right">
+                                        <div>02</div>
+                                    </div>
+                                    <div class="side">
+                                        <div>4 ستاره</div>
+                                    </div>
+                                    <div class="middle">
+                                        <div class="bar-container">
+                                            <div class="bar-4"></div>
+                                        </div>
+                                    </div>
+                                    <div class="side right">
+                                        <div>03</div>
+                                    </div>
+                                    <div class="side">
+                                        <div>3 ستاره</div>
+                                    </div>
+                                    <div class="middle">
+                                        <div class="bar-container">
+                                            <div class="bar-3"></div>
+                                        </div>
+                                    </div>
+                                    <div class="side right">
+                                        <div>04</div>
+                                    </div>
+                                    <div class="side">
+                                        <div>2 ستاره</div>
+                                    </div>
+                                    <div class="middle">
+                                        <div class="bar-container">
+                                            <div class="bar-2"></div>
+                                        </div>
+                                    </div>
+                                    <div class="side right">
+                                        <div>05</div>
+                                    </div>
+                                    <div class="side">
+                                        <div>1 ستاره</div>
+                                    </div>
+                                    <div class="middle">
+                                        <div class="bar-container">
+                                            <div class="bar-1"></div>
+                                        </div>
+                                    </div>
+                                    <div class="side right">
+                                        <div>00</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="products-review-comments">
+                                <h3>3 بررسی</h3>
+                                <div class="user-review">
+                                    <img src="{% static 'temp/images/testimonial/image-1.jpg' %}" alt="image">
+                                    
+                                    <div class="review-rating">
+                                        <div class="review-stars">
+                                            <i class='ri-star-fill checked'></i>
+                                            <i class='ri-star-fill checked'></i>
+                                            <i class='ri-star-fill checked'></i>
+                                            <i class='ri-star-fill checked'></i>
+                                            <i class='ri-star-fill checked'></i>
+                                        </div>
+
+                                        <span class="d-inline-block">جیمز اندرسون</span>
+                                    </div>
+
+                                    <span class="d-block sub-comment">عالی</span>
+                                    <p>لورم ایپسوم به سادگی ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم به مدت 40 سال استاندارد صنعت بوده است.</p>
+                                </div>
+                                <div class="user-review">
+                                    <img src="{% static 'temp/images/testimonial/image-2.jpg' %}" alt="image">
+                                    <div class="review-rating">
+                                        <div class="review-stars">
+                                            <i class='ri-star-fill checked'></i>
+                                            <i class='ri-star-fill checked'></i>
+                                            <i class='ri-star-fill checked'></i>
+                                            <i class='ri-star-fill'></i>
+                                            <i class='ri-star-fill'></i>
+                                        </div>
+
+                                        <span class="d-inline-block">دیوید اسمیت</span>
+                                    </div>
+                                    <span class="d-block sub-comment">کیفیت ویدیو!</span>
+                                    <p>لورم ایپسوم به سادگی ساختار چاپ و متن را در بر می گیرد. استاندارد صنعت بوده است.</p>
+                                </div>
+                                <div class="user-review">
+                                    <img src="{% static 'temp/images/testimonial/image-3.jpg' %}" alt="image">
+                                    <div class="review-rating">
+                                        <div class="review-stars">
+                                            <i class='ri-star-fill checked'></i>
+                                            <i class='ri-star-fill checked'></i>
+                                            <i class='ri-star-fill checked'></i>
+                                            <i class='ri-star-fill checked'></i>
+                                            <i class='ri-star-fill checked'></i>
+                                        </div>
+                                        <span class="d-inline-block">جان وارنر</span>
+                                    </div>
+                                    <span class="d-block sub-comment">کد نویسی عالی!</span>
+                                    <p>لورم ایپسوم به سادگی ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم استاندارد صنعت بوده است.</p>
+                                </div>
+                            </div>
+
+                            <div class="review-form-wrapper">
+                                <h3>نظر بدهید</h3>
+                                <p class="comment-notes">ایمیل شما منتشر نخواهد شد. موارد مهم مشخص شده اند <span>*</span></p>
+
+                                <form>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12">
+                                            <div class="rating">
+                                                <input type="radio" id="star5" name="rating" value="5" /><label for="star5"></label>
+                                                <input type="radio" id="star4" name="rating" value="4" /><label for="star4"></label>
+                                                <input type="radio" id="star3" name="rating" value="3" /><label for="star3"></label>
+                                                <input type="radio" id="star2" name="rating" value="2" /><label for="star2"></label>
+                                                <input type="radio" id="star1" name="rating" value="1" /><label for="star1"></label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="نام">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="form-group">
+                                                <input type="email" class="form-control" placeholder="ایمیل">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12 col-md-12">
+                                            <div class="form-group">
+                                                <textarea placeholder="نظر شما" class="form-control" cols="30" rows="6"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12 col-md-12">
+                                            <p class="comment-form-cookies-consent">
+                                                <input type="checkbox" id="test1">
+                                                <label for="test1">ایمیل و وبسایت من را در این مرورگر ذخیره کنید.</label>
+                                            </p>
+                                        </div>
+
+                                        <div class="col-lg-12 col-md-12">
+                                            <button type="submit" class="default-btn">ارسال</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Single Shop Area -->
+
+        <!-- Start Shop Area -->
+        <div class="shop-area pb-75">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <h2>محصولات مرتبط</h2>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-shop-card">
+                            <div class="shop-image">
+                                <a href="shop-details.html"><img src="{% static 'temp/images/shop/shop-1.png' %}" alt="image"></a>
+                            </div>
+                            <div class="shop-content">
+                                <h3>
+                                    <a href="shop-details.html">دستگاه تصفیه هوا</a>
+                                </h3>
+                                <span>1900 تومان</span>
+    
+                                <div class="cart-icon">
+                                    <a href="cart.html"><i class="ri-shopping-cart-line"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-shop-card">
+                            <div class="shop-image">
+                                <a href="shop-details.html"><img src="{% static 'temp/images/shop/shop-2.png' %}" alt="image"></a>
+                            </div>
+                            <div class="shop-content">
+                                <h3>
+                                    <a href="shop-details.html">سیستم تهویه هوا</a>
+                                </h3>
+                                <span>1300 تومان</span>
+    
+                                <div class="cart-icon">
+                                    <a href="cart.html"><i class="ri-shopping-cart-line"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-shop-card">
+                            <div class="shop-image">
+                                <a href="shop-details.html"><img src="{% static 'temp/images/shop/shop-3.png' %}" alt="image"></a>
+                            </div>
+                            <div class="shop-content">
+                                <h3>
+                                    <a href="shop-details.html">فن تهویه فضای باز</a>
+                                </h3>
+                                <span>2200 تومان</span>
+    
+                                <div class="cart-icon">
+                                    <a href="cart.html"><i class="ri-shopping-cart-line"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Shop Area -->
+
+{% endblock %}

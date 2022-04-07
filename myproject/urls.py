@@ -24,6 +24,4 @@ urlpatterns = [
     path('account/', include('account.urls')),
     path('poll/', include('poll.urls')),
     path('presentation_app/', include('presentation_app.urls')),
-]
-
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

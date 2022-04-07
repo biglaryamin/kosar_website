@@ -1,0 +1,204 @@
+﻿{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+
+        <!-- Start Blog Details Area -->
+        <div class="blog-details-area pt-100 pb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-12">
+                        <div class="blog-details-desc">
+                            <div class="article-content">
+                                <div class="article-image">
+                                    <img src="{{article.thumbnail.url}}" width="856" height="" alt="image">
+                                </div>
+                                <ul class="entry-meta">
+                                    <li>توسط: <a href="author.html">{{ article.author.get_full_name }}</a></li>
+                                    <li>(02) نظر</li>
+                                </ul>
+                                <h3>{{article.title}}</h3>
+                                <p>
+                                    {{article.description | safe}}
+                                </p>
+                                </div>
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="article-tags">
+                                        <ul>
+                                            <li><span>برچسب ها:</span></li>
+                                            {% for cat in article.category.all %}
+                                            <li><a href="blog.html">{{cat.title}}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="article-share">
+                                        <ul>
+                                            <li><span>اشترک گذاری:</span></li>
+                                            <li>
+                                                <a href="https://www.facebook.com/" target="_blank">
+                                                    <i class="ri-facebook-fill"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://twitter.com/?lang=en" target="_blank">
+                                                    <i class="ri-twitter-fill"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.instagram.com/" target="_blank">
+                                                    <i class="ri-instagram-line"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.linkedin.com/signup" target="_blank">
+                                                    <i class="ri-linkedin-line"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="article-comments">
+                                <h3>نظرات کاربران</h3>
+                                {% for comment in article.comments.all %}
+                                    <div class="comments-list">
+                                        <img src="{% static 'temp/images/testimonial/image-1.jpg' %}" alt="image">
+                                        <h5>{{comment.name}}</h5>
+                                        <span>{{comment.date_added}}</span>
+                                        <p>{{comment.body}}</p>
+                                        <a href="#" class="reply-btn"><i class="ri-reply-line"></i> پاسخ</a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                            <div class="article-leave-comment">
+                                <h3>نظر بدهید</h3>
+                                <p>آدرس ایمیل شما منتشر نخواهد شد.موارد الزامی  مشخص شده اند *</p>
+                                
+                                <form action="{% url 'blog:detail' article.slug %}" method="post">
+                                    {% csrf_token %}
+                                    <div class="row justify-content-center">
+                                        <div class="col-lg-6 col-md-12">
+                                            <div class="form-group">
+                                                <label>نام</label>
+                                                <input type="text" class="form-control" name="name">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-12">
+                                            <div class="form-group">
+                                                <label>ایمیل</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12 col-md-12">
+                                            <div class="form-group">
+                                                <label>وبسایت</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12 col-md-12">
+                                            <div class="form-group">
+                                                <label>نظر شما</label>
+                                                <textarea name="body" class="form-control">
+                                                </textarea>
+                                            </div>
+                                        </div>
+    
+                                        <div class="col-lg-12 col-md-12">
+                                            <button type="submit" class="default-btn">ارسال</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-12">
+                        <aside class="widget-area">
+                            <div class="widget widget_search">
+                                <form class="search-form">
+                                    <input type="search" class="search-field" placeholder="جستجو...">
+                                    <button type="submit"><i class="ri-search-line"></i></button>
+                                </form>
+                            </div>
+
+                            <div class="widget widget_services">
+                                <h3 class="widget-title">همه خدمات</h3>
+
+                                <ul class="services-list">
+                                    <li>
+                                        <a href="blog.html">تعمیر سیستم <i class="ri-arrow-left-s-line"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="blog.html">نصب سیستم <i class="ri-arrow-left-s-line"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="blog.html">ارائه خدمات <i class="ri-arrow-left-s-line"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="blog.html">آزمایش کیفیت <i class="ri-arrow-left-s-line"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="blog.html">سیستم اسپلیت بدون داکت <i class="ri-arrow-left-s-line"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="blog.html">تعمیر و نگهداری <i class="ri-arrow-left-s-line"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="blog.html">سرویس گرمایش <i class="ri-arrow-left-s-line"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="widget widget_kadi_posts_thumb">
+                                <h3 class="widget-title">پست های اخیر</h3>
+    
+                                <h4 class="post-title">
+                                    <a href="blog-details.html">5 نکته وجود دارد که باید در مورد تهویه هوا و انواع سیستم ها بدانید</a>
+                                </h4>
+                                <h4 class="post-title">
+                                    <a href="blog-details.html">5 نکته وجود دارد که باید در مورد تهویه هوا و انواع سیستم ها بدانید</a>
+                                </h4>
+                                <h4 class="post-title">
+                                    <a href="blog-details.html">5 نکته وجود دارد که باید در مورد تهویه هوا و انواع سیستم ها بدانید</a>
+                                </h4>
+                            </div>
+
+                            <div class="widget widget_tag_cloud">
+                                <h3 class="widget-title">برچسب ها</h3>
+    
+                                <div class="tagcloud">
+                                    <a href="blog.html">تعمیر</a>
+                                    <a href="blog.html">نصب و راه اندازی</a>
+                                    <a href="blog.html">نگهداری</a>
+                                    <a href="blog.html">خدمات</a>
+                                    <a href="blog.html">گرمایش</a>
+                                    <a href="blog.html">بدون کانال</a>
+                                    <a href="blog.html">تجاری</a>
+                                    <a href="blog.html">مواد</a>
+                                </div>
+                            </div>
+
+                            <div class="widget widget_contact">
+                                <h3>تماس بگیرید</h3>
+                                <h4>مشاوره رایگان دریافت کنید</h4>
+                                <div class="icon">
+                                    <i class="flaticon-headphones"></i>
+                                </div>
+                                <a href="tel:15143125678">+1 (514) 312-5678</a>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Blog Details Area -->
+
+{% endblock %}

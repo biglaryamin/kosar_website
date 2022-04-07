@@ -86,7 +86,6 @@ class Comment(models.Model):
 
 
 
-
 class Category(models.Model):
     parent     =models.ForeignKey('self' , default=None , null=True , blank=True, on_delete=models.SET_NULL ,related_name='children', verbose_name='زیردست')
     title      =models.CharField(max_length=200, verbose_name="عنوان")
