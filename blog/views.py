@@ -33,6 +33,7 @@ class ArticleList(ListView):
 	def get_context_data(self,**kwargs):
 		context = super(ArticleList,self).get_context_data(**kwargs)
 		context['last_three_articles'] = Article.objects.published().order_by('-publish')[0:3]
+		# context['all_comments'] = Article.comments.all().count()
 		return context
 
 

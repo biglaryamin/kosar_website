@@ -102,4 +102,3 @@ class Category(models.Model):
         return self.title
 
     objects=CategoryManager()
-
