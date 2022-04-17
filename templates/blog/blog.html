@@ -90,14 +90,9 @@
                                 <h3 class="widget-title">برچسب ها</h3>
     
                                 <div class="tagcloud">
-                                    <a href="blog.html">تعمیر</a>
-                                    <a href="blog.html">نصب و راه اندازی</a>
-                                    <a href="blog.html">نگهداری</a>
-                                    <a href="blog.html">خدمات</a>
-                                    <a href="blog.html">گرمایش</a>
-                                    <a href="blog.html">بدون کانال</a>
-                                    <a href="blog.html">تجاری</a>
-                                    <a href="blog.html">مواد</a>
+                                    {% for cat in cats %}
+                                        <a href="{% url 'blog:category' cat.slug %}">{{cat}}</a>
+                                    {% endfor %}
                                 </div>
                             </div>
 
