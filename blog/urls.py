@@ -1,6 +1,14 @@
 from django.urls import path,include
 from .views import ArticleList,CategoryList,AuthorList
 from .views import show_article_detail,show_contact_page,show_base_page
+from . import views
+
+#api
+from rest_framework import routers
+router = routers.DefaultRouter()
+router.register(r'articles', views.ArticleViewSet)
+
+
 
 
 app_name="blog"
@@ -14,4 +22,8 @@ urlpatterns = [
     path('category/<slug:slug>/page/<int:page>', CategoryList.as_view(), name="category"),
     path('author/<slug:username>', AuthorList.as_view(), name="author"),
     path('author/<slug:username>/page/<int:page>', AuthorList.as_view(), name="author"),
+
+    #api
+    path('', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]

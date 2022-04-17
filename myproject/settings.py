@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'crispy_forms',
     'poll.apps.PollConfig',
-
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -145,3 +145,10 @@ MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
 CRISPY_TEMPLATE_PACK='bootstrap4'
 
 AUTH_USER_MODEL='account.User'
+
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}

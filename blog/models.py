@@ -7,7 +7,6 @@ from account.models import User
 from extensions.utils import jalali_converter
 
 
-
 # my managers subclass
 class ArticleManager(models.Manager):
     def published(self):

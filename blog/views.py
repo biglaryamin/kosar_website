@@ -12,6 +12,11 @@ from django.views.generic.edit import CreateView
 from .forms import CommentForm
 
 
+#api
+from rest_framework import viewsets
+from rest_framework import permissions
+from .serializers import ArticleSerializer
+
 '''
 def home(request, page=1):
 	articles_list=Article.objects.published()
@@ -167,3 +172,14 @@ def show_contact_page(request):
 
 def show_base_page(request):
 	return render(request, "blog/base.html" )
+
+
+
+
+class ArticleViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Article.objects.all().order_by('-created')
+    serializer_class = ArticleSerializer
+    # permission_classes = [permissions.IsAuthenticated]
