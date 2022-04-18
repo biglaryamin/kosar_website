@@ -19,6 +19,10 @@ from rest_framework import permissions
 from .serializers import ArticleSerializer
 
 
+def custom_page_not_found_view(request, exception):
+    return render(request, "blog/404.html",{})
+
+
 
 class ArticleList(ListView):
 #	model=Article
