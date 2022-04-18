@@ -17,6 +17,7 @@ urlpatterns = [
     path('contact', show_contact_page , name="contact"),
     path('base', show_base_page , name="base"),
     path('page/<int:page>', ArticleList.as_view(), name="home"),
+    path('searched_item/', views.search , name="search_view"),
     path('article/<slug:slug>', show_article_detail , name="detail"),
     path('category/<slug:slug>', CategoryList.as_view(), name="category"),
     path('category/<slug:slug>/page/<int:page>', CategoryList.as_view(), name="category"),

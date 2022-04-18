@@ -1,6 +1,6 @@
 from pyexpat import model
 from django.contrib.auth import get_user_model
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404 , get_list_or_404
 from .models import Article,Category
 from account.models import User
 from django.http import HttpResponse,Http404
@@ -19,6 +19,7 @@ from rest_framework import permissions
 from .serializers import ArticleSerializer
 
 
+#404 view
 def custom_page_not_found_view(request, exception):
     return render(request, "blog/404.html",{})
 
@@ -112,6 +113,18 @@ def show_contact_page(request):
 
 def show_base_page(request):
 	return render(request, "blog/base.html" )
+
+
+
+def search(request):
+	if request.method == "POST":
+		input_word=request.POST.get("input_search")
+		found_articles = Article.objects.filter(title__contains = input_word)
+	
+	if found_articles:
+		return render(request , "blog/search_articles.html" , {'object_list':found_articles})
+	else:
+		return render(request , "blog/search_not_found.html")
 
 
 #api_views

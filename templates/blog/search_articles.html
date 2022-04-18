@@ -43,10 +43,9 @@
                     <div class="col-lg-4 col-md-12">
                         <aside class="widget-area">
                             <div class="widget widget_search">
-                                <form class="search-form" method="post" action="{% url 'blog:search_view' %}">
-                                    {% csrf_token %}
-                                    <input type="search" name="input_search" class="search-field" placeholder="جستجو...">
-                                    <button type="submit"><i class="ri-search-line">بجو</i></button>
+                                <form class="search-form">
+                                    <input type="search" class="search-field" placeholder="جستجو...">
+                                    <button type="submit"><i class="ri-search-line"></i></button>
                                 </form>
                             </div>
 
