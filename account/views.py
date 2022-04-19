@@ -11,7 +11,7 @@ from .forms import ProfileForm
 
 
 class ArticlelList(LoginRequiredMixin , ListView):
-#    queryset=Article.objects.all()    
+#    queryset=Article.objects.all()
     template_name='registration/home.html'
 
     def get_queryset(self):
