@@ -8,6 +8,9 @@ from .models import User
 from django.urls import reverse_lazy
 from .forms import ProfileForm
 
+from rest_framework import viewsets
+from rest_framework import permissions
+from .serializers import UserSerializer
 
 
 class ArticlelList(LoginRequiredMixin , ListView):
@@ -58,3 +61,14 @@ class Profile(LoginRequiredMixin ,UpdateView):
             'user':self.request.user
         })
         return kwargs
+
+
+#api_views
+
+class UserViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    # permission_classes = [permissions.IsAuthenticated]

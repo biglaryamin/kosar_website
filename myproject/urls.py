@@ -18,13 +18,17 @@ from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 
+# from rest_framework import routers
+# router = routers.DefaultRouter()
+
 handler404 = 'blog.views.custom_page_not_found_view'
 
 
 urlpatterns = [
 	path('admin/', admin.site.urls),
-	path('', include('blog.urls')),
+	path('blog/', include('blog.urls')),
     path('account/', include('account.urls')),
     path('poll/', include('poll.urls')),
     path('presentation_app/', include('presentation_app.urls')),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

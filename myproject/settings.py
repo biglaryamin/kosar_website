@@ -40,14 +40,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'blog.apps.BlogConfig',
     'presentation_app',
     'account.apps.AccountConfig',
-    'extensions',
+    'poll.apps.PollConfig',
+
+    'rest_framework',
     'widget_tweaks',
     'crispy_forms',
-    'poll.apps.PollConfig',
-    'rest_framework',
+
+    'extensions',
 ]
 
 MIDDLEWARE = [

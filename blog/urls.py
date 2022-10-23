@@ -10,7 +10,6 @@ router.register(r'articles', views.ArticleViewSet)
 
 
 
-
 app_name="blog"
 urlpatterns = [
     path('', ArticleList.as_view(), name="home"),
@@ -26,5 +25,4 @@ urlpatterns = [
 
     #api
     path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
