@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView,CreateView,UpdateView,DeleteView
@@ -72,3 +72,16 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     # permission_classes = [permissions.IsAuthenticated]
+
+
+def edit_mainpage(request):
+    return render(request, "registration/edit_main-page.html")
+
+
+def save_file(request):
+    if request.method == "POST":
+        print("$$$$$$$$$$$$$$$$$$$$$$$$$")
+        f = request.FILES['img'] # here you get the files needed
+        print(f"---------- name is : {f.name} ---------")
+        return redirect("presentation_blog:main_page")
+    return render(request, "registration/edit_main-page.html")

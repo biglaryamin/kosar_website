@@ -1,0 +1,74 @@
+{% extends 'registration/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}{% block title-meta %}
+	پروفایل کاربری
+{% endblock %}{% endblock %}
+
+{% block main %}
+<div class="col-md-12">
+  <div class="card card-primary">
+    <div class="card-header">
+      <h3 class="card-title mb-0 float-left">پروفایل کاربری</h3>
+    </div>
+		<div class="card-body">
+			<form method="post" enctype="multipart/form-data" action="{% url 'account:save_file' %}">
+        {% csrf_token %}
+		    <div class="row">
+		      <div class="col-6">
+                <label for="img">انتخاب عکس ۱:</label>
+                <input type="file" id="img" name="img" accept="image/*">
+                <input type="submit">
+		        <input>
+          </div>
+			</form>
+              <div class="col-6">
+                <label for="img">انتخاب عکس ۲:</label>
+                <input type="file" id="img" name="img" accept="image/*">
+                <input type="submit">
+		        <input>
+              </div>
+              <hr>
+		      <div class="col-6">
+                <label for="img">انتخاب عکس ۱:</label>
+                <input type="file" id="img" name="img" accept="image/*">
+                <input type="submit">
+		        <input>
+              </div>
+              <div class="col-6">
+                <label for="img">انتخاب عکس ۲:</label>
+                <input type="file" id="img" name="img" accept="image/*">
+                <input type="submit">
+		        <input>
+              </div>
+              <hr>		      <div class="col-6">
+                <label for="img">انتخاب عکس ۱:</label>
+                <input type="file" id="img" name="img" accept="image/*">
+                <input type="submit">
+		        <input>
+              </div>
+              <div class="col-6">
+                <label for="img">انتخاب عکس ۲:</label>
+                <input type="file" id="img" name="img" accept="image/*">
+                <input type="submit">
+		        <input>
+              </div>
+              <hr>		      <div class="col-6">
+                <label for="img">انتخاب عکس ۱:</label>
+                <input type="file" id="img" name="img" accept="image/*">
+                <input type="submit">
+		        <input>
+              </div>
+              <div class="col-6">
+                <label for="img">انتخاب عکس ۲:</label>
+                <input type="file" id="img" name="img" accept="image/*">
+                <input type="submit">
+		        <input>
+              </div>
+              <hr>
+              
+		    </div>
+				<button class="btn btn-success">ویرایش اطلاعات</button>
+		</div>
+</div>
+{% endblock %}

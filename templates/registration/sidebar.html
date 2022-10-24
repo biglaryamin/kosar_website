@@ -1,11 +1,10 @@
 {% load static %}
 
-<head>
-  <script src="https://use.fontawesome.com/84c3f8fd28.js"></script>
-</head>
+<!-- <head> -->
+  <!-- <script src="https://use.fontawesome.com/84c3f8fd28.js"></script> -->
+<!-- </head> -->
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -75,9 +74,18 @@
             </a>
 
           </li>
+          <li class="nav-item">
+            <a href="{% url 'account:edit_main' %}" class="nav-link" >
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                صفحه ارايه شرکت
+              </p>
+            </a>
+
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
-  </aside>
+</aside>
