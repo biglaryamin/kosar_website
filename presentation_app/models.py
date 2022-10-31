@@ -1,5 +1,13 @@
 from django.db import models
 from django.utils import timezone
+from django.urls import reverse
+
+# image imports
+import PIL
+from io import BytesIO
+from PIL import Image
+from django.core.files import File
+
 
 
 STATUS_CHOICES={
@@ -18,6 +26,50 @@ class Products(models.Model):
 
 
     class Meta:
-        verbose_name       ="محصول"
-        verbose_name_plural="محصولات"
-        ordering           =['-publish']
+        verbose_name = "محصول"
+        verbose_name_plural = "محصولات"
+        ordering = ['-publish']
+
+
+
+class ImageModel(models.Model):
+    name = models.CharField(max_length=10, blank=True, null=True)
+    image = models.ImageField(upload_to='images/', null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+   
+
+    def valid_extension(self,_img):
+        if '.jpg' in _img:
+            return "JPEG"
+        elif '.jpeg' in _img:
+            return "JPEG"
+        elif '.png' in _img:
+            return "PNG"
+
+
+    def get_absolute_url(self):
+        return f"/images/{self.name}/"
+
+
+    def get_absolute_url(self):
+      return reverse('news', kwargs={'pk': self.pk, 'slug': self.slug })
+
+
+
+    class Meta:
+        verbose_name = "عکس"
+        verbose_name_plural = "عکس ها"
+
+
+    # def compress_images(self,image):
+    #     im = Image.open(image)
+    #     width, height = im.size
+    #     im = im.resize((width-50, height-50), PIL.Image.ANTIALIAS) 
+    #     # crear a BytesIO object
+    #     im_io = BytesIO() 
+    #     im.save(im_io, self.valid_extension(image.name) ,optimize=True, 
+    #     quality=70) 
+    #     new_image = File(im_io, name=image.name)
+    #     return new_image

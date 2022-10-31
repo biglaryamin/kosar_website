@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView,CreateView,UpdateView,DeleteView
 from blog.models import Article
+from presentation_app.models import ImageModel
 from .mixins import FieldsMixin,FormValidMixin,AuthorAccessMixin,SuperUserAccessMixin
 from .models import User
 from django.urls import reverse_lazy
@@ -11,6 +12,8 @@ from .forms import ProfileForm
 from rest_framework import viewsets
 from rest_framework import permissions
 from .serializers import UserSerializer
+
+from presentation_app.forms import ImageForm
 
 
 class ArticlelList(LoginRequiredMixin , ListView):
@@ -75,13 +78,28 @@ class UserViewSet(viewsets.ModelViewSet):
 
 
 def edit_mainpage(request):
-    return render(request, "registration/edit_main-page.html")
+    try:
+        image_object = ImageModel.objects.get(id=52)
+        print(f"------------{image_object.get_absolute_url()}---------------")
+    except:
+        image_object = ""
+    if request.method == 'POST':
+        img_form = ImageForm(request.POST, request.FILES)
+        if img_form.is_valid():
+            print(f"******name is {img_form.cleaned_data}*********")
+            img_form.save()
+            return render(request, "registration/edit_main-page.html", {"img_form":img_form, "image_object":image_object})
+
+    else:
+        img_form = ImageForm()
+        return render(request, "registration/edit_main-page.html", {"img_form":img_form})
 
 
+# Is it useful?
 def save_file(request):
-    if request.method == "POST":
-        print("$$$$$$$$$$$$$$$$$$$$$$$$$")
-        f = request.FILES['img'] # here you get the files needed
-        print(f"---------- name is : {f.name} ---------")
-        return redirect("presentation_blog:main_page")
-    return render(request, "registration/edit_main-page.html")
+    if request.method == 'POST':
+        img_form = ImageForm(request.POST or None)
+        if img_form.is_valid():
+            img_form.save()
+
+    return render(request, "registration/edit_main-page.html", {"img_form":img_form})

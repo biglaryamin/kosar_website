@@ -3,3 +3,4 @@ from . import models
 
 
 admin.site.register(models.Products)
+admin.site.register(models.ImageModel)
