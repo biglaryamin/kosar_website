@@ -66,7 +66,7 @@ class Profile(LoginRequiredMixin ,UpdateView):
         return kwargs
 
 
-#api_views
+# api_views
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -78,21 +78,62 @@ class UserViewSet(viewsets.ModelViewSet):
 
 
 def edit_mainpage(request):
-    try:
-        image_object = ImageModel.objects.get(id=52)
-        print(f"------------{image_object.get_absolute_url()}---------------")
-    except:
-        image_object = ""
     if request.method == 'POST':
-        img_form = ImageForm(request.POST, request.FILES)
-        if img_form.is_valid():
-            print(f"******name is {img_form.cleaned_data}*********")
-            img_form.save()
-            return render(request, "registration/edit_main-page.html", {"img_form":img_form, "image_object":image_object})
+        if "btn1" in request.POST:
+            img_form = ImageForm(request.POST, request.FILES)
 
-    else:
-        img_form = ImageForm()
-        return render(request, "registration/edit_main-page.html", {"img_form":img_form})
+            if img_form.is_valid():
+                img_form.save(commit=False)
+                img_form.name = "wallpaper1"
+                img_form.save()
+                return render(request, "registration/edit_main-page.html", {"img_form":img_form})
+
+            else:
+                img_form = ImageForm()
+                return render(request, "registration/edit_main-page.html", {"img_form":img_form})
+        ########################################################################
+        elif "btn2" in request.POST:
+            img_form = ImageForm(request.POST, request.FILES)
+            if img_form.is_valid():
+                img_form.save(commit=False)
+                img_form.name = "wallpaper2"
+                img_form.save()
+                return render(request, "registration/edit_main-page.html", {"img_form":img_form})
+
+            else:
+                img_form = ImageForm()
+                return render(request, "registration/edit_main-page.html", {"img_form":img_form})
+        ########################################################################
+        elif "btn3" in request.POST:
+            img_form = ImageForm(request.POST, request.FILES)
+
+            if img_form.is_valid():
+                img_form.save(commit=False)
+                img_form.name = "wallpaper3"
+                img_form.save()                
+                return render(request, "registration/edit_main-page.html", {"img_form":img_form})
+
+            else:
+                img_form = ImageForm()
+                return render(request, "registration/edit_main-page.html", {"img_form":img_form})
+        ########################################################################
+        elif "btn4" in request.POST:
+            img_form = ImageForm(request.POST, request.FILES)
+
+            if img_form.is_valid():
+                img_form.save(commit=False)
+                img_form.name = "wallpaper4"
+                img_form.save()    
+                return render(request, "registration/edit_main-page.html", {"img_form":img_form})
+
+            else:
+                img_form = ImageForm()
+                return render(request, "registration/edit_main-page.html", {"img_form":img_form})
+
+
+
+
+
 
 
 # Is it useful?
