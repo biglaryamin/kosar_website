@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView,CreateView,UpdateView,DeleteView
@@ -79,9 +79,13 @@ class UserViewSet(viewsets.ModelViewSet):
     # permission_classes = [permissions.IsAuthenticated]
 
 
+def delete_old_image(wallpaper_name):
+    the_image = ImageModel.objects.filter(name=wallpaper_name)
+    the_image.delete()
+
+
+
 def edit_mainpage(request):
-    the_image = ImageModel.objects.get(id=123)
-    print(f"*********url is {the_image.get_absolute_url()}*************")
     img_form = ImageForm()
     if request.method == 'POST':
         if "btn1" in request.POST:
@@ -89,7 +93,8 @@ def edit_mainpage(request):
 
             if img_form.is_valid():
                 img_obj = img_form.save(commit=False)
-                img_obj.name = "wallpaper3"
+                img_obj.name = "wallpaper1"
+                delete_old_image(img_obj.name)
                 img_obj.save()                
             else:
                 img_form = ImageForm()
@@ -99,7 +104,8 @@ def edit_mainpage(request):
 
             if img_form.is_valid():
                 img_obj = img_form.save(commit=False)
-                img_obj.name = "wallpaper3"
+                img_obj.name = "wallpaper2"
+                delete_old_image(img_obj.name)
                 img_obj.save()                
             else:
                 img_form = ImageForm()
@@ -110,6 +116,7 @@ def edit_mainpage(request):
             if img_form.is_valid():
                 img_obj = img_form.save(commit=False)
                 img_obj.name = "wallpaper3"
+                delete_old_image(img_obj.name)
                 img_obj.save()                
             else:
                 img_form = ImageForm()
@@ -119,7 +126,8 @@ def edit_mainpage(request):
 
             if img_form.is_valid():
                 img_obj = img_form.save(commit=False)
-                img_obj.name = "wallpaper3"
+                img_obj.name = "wallpaper4"
+                delete_old_image(img_obj.name)
                 img_obj.save()                
             else:
                 img_form = ImageForm()
@@ -127,9 +135,7 @@ def edit_mainpage(request):
         img_form = ImageForm()
     
 
-    dir = os.path.join(settings.BASE_DIR, 'media/images')
-
-    return render(request, "registration/edit_main-page.html", {"img_form":img_form, "dir":dir , "the_image":the_image})
+    return render(request, "registration/edit_main-page.html", {"img_form":img_form})
 
 
 
