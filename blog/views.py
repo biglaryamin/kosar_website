@@ -26,9 +26,7 @@ def custom_page_not_found_view(request, exception):
 
 
 class ArticleList(ListView):
-#	model=Article
 	template_name="blog/blog.html"
-#	context_object_name="articles"
 	queryset     	   =Article.objects.published()
 	paginate_by  	   =3
 
@@ -41,9 +39,6 @@ class ArticleList(ListView):
 
 
 def show_article_detail(request , slug):
-	the_article=get_object_or_404(Article , slug=slug)
-	print(f"All comment is ############## ===> {the_article.comments.all().count()}")
-	print(f" the article is {the_article} *************")
 	if request.method == 'POST':
 		MyCommentForm=CommentForm(request.POST or None)
 		if MyCommentForm.is_valid():
