@@ -1,8 +1,12 @@
+# python import(s)
+import os
+
+# django import(s)
 from django.db import models
 from django.utils import timezone
 from django.urls import reverse
 
-# image imports
+# image import(s)
 import PIL
 from io import BytesIO
 from PIL import Image
@@ -14,6 +18,21 @@ STATUS_CHOICES={
         ('a','موجود'),
         ('u','ناموجود'),
     }
+
+
+
+def path_and_rename(instance, filename):
+    upload_to = 'images'
+    ext = filename.split('.')[-1]
+    # get filename
+    if instance.pk:
+        filename = '{}.{}'.format(instance.pk, ext)
+    else:
+        # set filename as random string
+        filename = '{}.{}'.format("something", ext)
+    # return the whole path to the file
+    return os.path.join(upload_to, filename)
+
 
 
 class Products(models.Model):
@@ -34,7 +53,7 @@ class Products(models.Model):
 
 class ImageModel(models.Model):
     name = models.CharField(max_length=10, blank=True, null=True)
-    image = models.ImageField(upload_to='images/', null=True, blank=True)
+    image = models.ImageField(upload_to=path_and_rename, null=True, blank=True)
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -49,8 +68,8 @@ class ImageModel(models.Model):
             return "PNG"
 
 
-    def get_absolute_url(self):
-        return f"/images/{self.name}/"
+    # def get_absolute_url(self):
+    #     return f"/images/{self.name}/"
 
 
     def get_absolute_url(self):

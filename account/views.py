@@ -15,6 +15,8 @@ from .serializers import UserSerializer
 
 from presentation_app.forms import ImageForm
 
+from django.conf import settings
+import os 
 
 class ArticlelList(LoginRequiredMixin , ListView):
 #    queryset=Article.objects.all()
@@ -121,8 +123,11 @@ def edit_mainpage(request):
                 img_form = ImageForm()
     else:
         img_form = ImageForm()
-                
-    return render(request, "registration/edit_main-page.html", {"img_form":img_form})
+    
+
+    dir = os.path.join(settings.BASE_DIR, 'media/images')
+
+    return render(request, "registration/edit_main-page.html", {"img_form":img_form, "dir":dir })
 
 
 
