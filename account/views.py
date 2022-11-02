@@ -80,6 +80,8 @@ class UserViewSet(viewsets.ModelViewSet):
 
 
 def edit_mainpage(request):
+    the_image = ImageModel.objects.get(id=123)
+    print(f"*********url is {the_image.get_absolute_url()}*************")
     img_form = ImageForm()
     if request.method == 'POST':
         if "btn1" in request.POST:
@@ -127,7 +129,7 @@ def edit_mainpage(request):
 
     dir = os.path.join(settings.BASE_DIR, 'media/images')
 
-    return render(request, "registration/edit_main-page.html", {"img_form":img_form, "dir":dir })
+    return render(request, "registration/edit_main-page.html", {"img_form":img_form, "dir":dir , "the_image":the_image})
 
 
 

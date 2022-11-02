@@ -73,7 +73,7 @@ class ImageModel(models.Model):
 
 
     def get_absolute_url(self):
-        return reverse('news', kwargs={'pk': self.pk, 'slug': self.slug })
+        return str(self.image.url)
 
 
 
