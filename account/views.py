@@ -13,7 +13,7 @@ from rest_framework import viewsets
 from rest_framework import permissions
 from .serializers import UserSerializer
 
-from presentation_app.forms import ImageForm
+from presentation_app.forms import ImageForm, TextForm
 
 from django.conf import settings
 import os 
@@ -84,9 +84,15 @@ def delete_old_image(wallpaper_name):
     the_image.delete()
 
 
+def delete_old_text(text_name):
+    the_text = ImageModel.objects.filter(name=text_name)
+    the_text.delete()
+
+
 
 def edit_mainpage(request):
     img_form = ImageForm()
+    txtform = TextForm()
     if request.method == 'POST':
         if "btn1" in request.POST:
             img_form = ImageForm(request.POST, request.FILES)
@@ -131,11 +137,25 @@ def edit_mainpage(request):
                 img_obj.save()                
             else:
                 img_form = ImageForm()
+        ########################################################################
+        elif "text1" in request.POST:
+            txt_form = TextForm(request.POST, request.FILES)
+
+            if img_form.is_valid():
+                img_obj = img_form.save(commit=False)
+                img_obj.name = "wallpaper3"
+                delete_old_image(img_obj.name)
+                img_obj.save()                
+            else:
+                img_form = ImageForm()
+
+        
     else:
         img_form = ImageForm()
     
 
-    return render(request, "registration/edit_main-page.html", {"img_form":img_form})
+
+    return render(request, "registration/edit_main-page.html", {"img_form":img_form, "TextForm":TextForm })
 
 
 

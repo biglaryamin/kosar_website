@@ -82,13 +82,12 @@ class ImageModel(models.Model):
         verbose_name_plural = "عکس ها"
 
 
-    # def compress_images(self,image):
-    #     im = Image.open(image)
-    #     width, height = im.size
-    #     im = im.resize((width-50, height-50), PIL.Image.ANTIALIAS) 
-    #     # crear a BytesIO object
-    #     im_io = BytesIO() 
-    #     im.save(im_io, self.valid_extension(image.name) ,optimize=True, 
-    #     quality=70) 
-    #     new_image = File(im_io, name=image.name)
-    #     return new_image
+class TextModel(models.Model):
+    name = models.CharField(max_length=10, null=True, blank=True)
+    pre_text = models.TextField(null=True, blank=True)
+    text = models.TextField(null=True, blank=True)
+    post_text = models.TextField(null=True, blank=True)
+
+
+    def __str__(self):
+        return self.name

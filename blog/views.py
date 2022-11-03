@@ -10,7 +10,6 @@ from .forms import CommentForm
 from .models import Comment
 from django.shortcuts import redirect,HttpResponseRedirect
 from django.views.generic.edit import CreateView
-from .forms import CommentForm
 
 
 #api
