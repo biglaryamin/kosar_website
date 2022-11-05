@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView,CreateView,UpdateView,DeleteView
 from blog.models import Article
-from presentation_app.models import ImageModel
+from presentation_app.models import ImageModel, TextModel
 from .mixins import FieldsMixin,FormValidMixin,AuthorAccessMixin,SuperUserAccessMixin
 from .models import User
 from django.urls import reverse_lazy
@@ -85,7 +85,7 @@ def delete_old_image(wallpaper_name):
 
 
 def delete_old_text(text_name):
-    the_text = ImageModel.objects.filter(name=text_name)
+    the_text = TextModel.objects.filter(name=text_name)
     the_text.delete()
 
 
@@ -141,18 +141,13 @@ def edit_mainpage(request):
         elif "text1" in request.POST:
             txt_form = TextForm(request.POST, request.FILES)
 
-            if img_form.is_valid():
-                img_obj = img_form.save(commit=False)
-                img_obj.name = "wallpaper3"
-                delete_old_image(img_obj.name)
-                img_obj.save()                
+            if txt_form.is_valid():
+                txt_obj = txt_form.save(commit=False)
+                txt_obj.name = "text1"
+                delete_old_text(txt_obj.name)
+                txt_obj.save()                
             else:
-                img_form = ImageForm()
-
-        
-    else:
-        img_form = ImageForm()
-    
+                txt_form = TextForm()
 
 
     return render(request, "registration/edit_main-page.html", {"img_form":img_form, "TextForm":TextForm })

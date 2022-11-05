@@ -91,3 +91,8 @@ class TextModel(models.Model):
 
     def __str__(self):
         return self.name
+
+
+    class Meta:
+        verbose_name = "متن"
+        verbose_name_plural = "متن ها"

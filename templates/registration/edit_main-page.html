@@ -38,15 +38,13 @@
             <hr>
             <hr>
             <h1>متن صفحه اصلی</h1>
-            <form method="post" action="#">
+            <form method="post" action="{% url 'account:edit_main' %}">
+              {% csrf_token %}
               {{ TextForm.name|as_crispy_field }} 
               {{ TextForm.pre_text|as_crispy_field }} 
               {{ TextForm.text|as_crispy_field }} 
               {{ TextForm.post_text|as_crispy_field }} 
-
-
-
-              <button type="submit">ارسال</button>
+              <button type="submit" name="text1">ارسال</button>
             </form>
             <br>
         </div>
