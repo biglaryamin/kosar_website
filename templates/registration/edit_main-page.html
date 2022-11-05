@@ -35,9 +35,19 @@
               <button type="submit" name="btn4">ارسال</button>
             </form>
             <hr>
-            {{dir}}
-            <img src="{{the_image.get_absolute_url}}" alt="it is a picture">
-              <!-- <img src="/home/mohammadamin/Desktop/company(copy)/kosar_website/media/images/profile.png" alt="Girl in a jacket" width="500" height="600"> -->
+            <hr>
+            <hr>
+            <h1>متن صفحه اصلی</h1>
+            <form method="post" action="#">
+              {{ TextForm.name|as_crispy_field }} 
+              {{ TextForm.pre_text|as_crispy_field }} 
+              {{ TextForm.text|as_crispy_field }} 
+              {{ TextForm.post_text|as_crispy_field }} 
+
+
+
+              <button type="submit">ارسال</button>
+            </form>
             <br>
         </div>
         <br>
