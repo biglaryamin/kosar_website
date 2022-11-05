@@ -148,9 +148,20 @@ def edit_mainpage(request):
                 txt_obj.save()                
             else:
                 txt_form = TextForm()
+        ########################################################################
+        elif "text2" in request.POST:
+            txt_form = TextForm(request.POST, request.FILES)
+
+            if txt_form.is_valid():
+                txt_obj = txt_form.save(commit=False)
+                txt_obj.name = "text2"
+                delete_old_text(txt_obj.name)
+                txt_obj.save()                
+            else:
+                txt_form = TextForm()
 
 
-    return render(request, "registration/edit_main-page.html", {"img_form":img_form, "TextForm":TextForm })
+    return render(request, "registration/edit_main-page.html", {"img_form":img_form, "TextForm":TextForm})
 
 
 

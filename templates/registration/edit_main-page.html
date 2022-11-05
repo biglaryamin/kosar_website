@@ -38,14 +38,29 @@
             <hr>
             <hr>
             <h1>متن صفحه اصلی</h1>
-            <form method="post" action="{% url 'account:edit_main' %}">
-              {% csrf_token %}
-              {{ TextForm.name|as_crispy_field }} 
-              {{ TextForm.pre_text|as_crispy_field }} 
-              {{ TextForm.text|as_crispy_field }} 
-              {{ TextForm.post_text|as_crispy_field }} 
-              <button type="submit" name="text1">ارسال</button>
-            </form>
+            <div>
+              <form method="post" action="{% url 'account:edit_main' %}" style="width: 50%;margin-left : 25%">
+                {% csrf_token %}
+                {{ TextForm.name|as_crispy_field }} 
+                {{ TextForm.pre_text|as_crispy_field }} 
+                {{ TextForm.text|as_crispy_field }} 
+                {{ TextForm.post_text|as_crispy_field }} 
+                <button type="submit" name="text1">ارسال</button>
+              </form>
+            </div>
+            <hr>
+            <hr>
+            <hr>
+            <div>
+              <form method="post" action="{% url 'account:edit_main' %}" style="width: 50%;margin-left : 25%">
+                {% csrf_token %}
+                {{ TextForm.name|as_crispy_field }} 
+                {{ TextForm.pre_text|as_crispy_field }} 
+                {{ TextForm.text|as_crispy_field }} 
+                {{ TextForm.post_text|as_crispy_field }} 
+                <button type="submit" name="text2">ارسال</button>
+              </form>
+            </div>
             <br>
         </div>
         <br>
