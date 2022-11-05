@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'presentation_app',
     'account.apps.AccountConfig',
     'poll.apps.PollConfig',
+    'crawler.apps.CrawlerConfig',
 
     'rest_framework',
     'widget_tweaks',
