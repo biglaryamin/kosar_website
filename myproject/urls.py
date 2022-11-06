@@ -29,7 +29,7 @@ urlpatterns = [
 	path('blog/', include('blog.urls')),
     path('account/', include('account.urls')),
     path('poll/', include('poll.urls')),
-    path('crawler', include('crawler.urls')),
+    path('crawler/', include('crawler.urls')),
     path('', include('presentation_app.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

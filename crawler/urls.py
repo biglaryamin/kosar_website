@@ -3,7 +3,7 @@ from .views import test
 
 app_name="crawler"
 urlpatterns=[
-    path('test', test_view, name='test'),
+    path('test', test, name='test'),
 ]
 
 
