@@ -7,27 +7,27 @@
                 <div class="row">
                     <div class="col-lg-8 col-md-12">
                         <div class="row">
-                            {% for article in object_list %}
+                            {% for article in articles %}
                                 <div class="col-lg-12 col-md-12 blog-more-item">
                                     <div class="single-blog-card">
                                         <div class="blog-image">
-                                            <a href="{% url 'blog:detail' article.slug %}"><img src="{{ article.thumbnail.url }}" alt="image" width="850" height="650"></a>
+                                            <a href="#"><img src="#" alt="image" width="850" height="650"></a>
             
                                             <div class="date">
-                                                {{article.jpublish}}
+                                                <span>تاریخ انتشار</span>
                                                 <h3>24</h3>
                                                 <span>دی</span>
                                             </div>
                                         </div>
                                         <div class="blog-content">
                                             <ul class="entry-meta">
-                                                <li>توسط: <a href="blog.html">{{ article.author.get_full_name }}</a>  /  ({{article.comments.all.count}}) نظر</li>
+                                                <li>توسط: <a href="#"><span>اسم نویسنده</span></a>  /  (همه ی نظرات نظر</li>
                                             </ul>
                                             <h3>
-                                                <a href="{% url 'blog:detail' article.slug %}">{{article.title}}</a>
+                                                <a href="#">{{article.title}}</a>
                                             </h3>
-                                            <p> {{article.description|safe|truncatewords:40}} </p>
-                                            <a href="{% url 'blog:detail' article.slug %}" class="blog-btn">مشاهده بیشتر</a>
+                                            <p> {{article.text|safe|truncatewords:20}} </p>
+                                            <a href="#" class="blog-btn">مشاهده بیشتر</a>
                                         </div>
                                     </div>
                                 </div>

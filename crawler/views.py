@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse
-
+from .models import CrawledArticle
 
 
 def test(request):
-    return render(request, "crawler/list.html")
+    articles = CrawledArticle.objects.all()
+    return render(request, "crawler/list.html", {"articles":articles})
