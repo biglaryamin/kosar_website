@@ -1,3 +1,7 @@
+# regex
+import re
+
+# django
 from django.shortcuts import render, HttpResponse
 from .models import CrawledArticle
 
@@ -9,12 +13,25 @@ from bs4 import BeautifulSoup
 def crawler(url):
     page = requests.get(url)
     soup = BeautifulSoup(page.content, "html.parser")
-    links = soup.select("tr td span.titleline")
-    return links
+    titles = soup.select("tr td span.titleline")
+    return titles
+
+
+# def get_links(url):
+#     page = requests.get(url)
+#     soup = BeautifulSoup(page.content, "html.parser")
+#     links = soup.select("tr td span a")
+#     result = re.findall(r".*href=(.*?)\>", link)
+#     for link in links:
+#         print(link)
+#         print("****************************")
+
+    
 
 
 def test(request):
     url = "https://news.ycombinator.com/"
+    # get_links(url)
     articles = CrawledArticle.objects.all().order_by('-created')
     local_articles = []
     for article in articles:
