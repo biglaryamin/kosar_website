@@ -15,16 +15,20 @@ def crawler(url):
 
 def test(request):
     url = "https://news.ycombinator.com/"
-    articles = CrawledArticle.objects.all().order_by()
-
+    articles = CrawledArticle.objects.all().order_by('-created')
+    local_articles = []
+    for article in articles:
+        local_articles.append(str(article.title))
+        
     for link in crawler(url):
         try:
             the_article = CrawledArticle(title=link.text)
-            if the_article not in articles:
+            if str(the_article.title) not in local_articles:
                 the_article.save()
+
         except:
-            the_article = CrawledArticle(title="can not save")
-            the_article.save()
+            pass
 
     author = ""
+    print(f"******* number of all articles are : {articles.count()} **********")
     return render(request, "crawler/list.html", {"articles":articles, "author":author})
