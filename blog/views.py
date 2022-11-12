@@ -1,14 +1,8 @@
-from pyexpat import model
-from django.contrib.auth import get_user_model
 from django.shortcuts import render, get_object_or_404 , get_list_or_404
 from .models import Article,Category
 from account.models import User
-from django.http import HttpResponse,Http404
-from django.core.paginator import Paginator
-from django.views.generic import ListView,DetailView
+from django.views.generic import ListView
 from .forms import CommentForm
-from .models import Comment
-from django.shortcuts import redirect,HttpResponseRedirect
 from django.views.generic.edit import CreateView
 
 
@@ -21,7 +15,6 @@ from .serializers import ArticleSerializer
 #404 view
 def custom_page_not_found_view(request, exception):
     return render(request, "blog/404.html",{})
-
 
 
 class ArticleList(ListView):
@@ -84,7 +77,6 @@ class CategoryList(ListView):
 		return context
 
 
-
 class AuthorList(ListView):
 	paginate_by = 3
 	template_name='blog/author_list.html'
@@ -92,7 +84,7 @@ class AuthorList(ListView):
 	def get_queryset(self):
 		global author
 		username=self.kwargs.get('username')
-		author=get_object_or_404(User , username=username)
+		author=get_object_or_404(User, username=username)
 		return author.articles.published()
 
 	def get_context_data(self, **kwargs):
@@ -109,16 +101,15 @@ def show_base_page(request):
 	return render(request, "blog/base.html" )
 
 
-
 def search(request):
+	found_articles = Article.objects.none()
 	if request.method == "POST":
 		input_word=request.POST.get("input_search")
 		found_articles = Article.objects.filter(title__contains = input_word)
-	
+
 	if found_articles:
 		return render(request , "blog/search_articles.html" , {'object_list':found_articles})
-	else:
-		return render(request , "blog/search_not_found.html")
+	return render(request , "blog/search_not_found.html")
 
 
 #api_views

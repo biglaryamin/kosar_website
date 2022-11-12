@@ -51,6 +51,11 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'crispy_forms',
 
+
+    # realted to celery
+    'django_celery_results',
+    'django_celery_beat',
+
     'extensions',
 ]
 
@@ -157,6 +162,17 @@ REST_FRAMEWORK = {
 }
 
 
-# Celery settings
+
+
+# Celery configs
 CELERY_BROKER_URL = "redis://localhost:6379"
 CELERY_RESULT_BACKEND = "redis://localhost:6379"
+
+# NEW CELERY SETTINGS
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SELERLIZER = 'json'
+CELERY_TIMEZONE = 'Asia/Tehran'
+
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+
