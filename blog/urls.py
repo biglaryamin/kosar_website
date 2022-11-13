@@ -8,7 +8,7 @@ from rest_framework import routers
 router = routers.DefaultRouter()
 router.register(r'articles', views.ArticleViewSet)
 
-
+from .views import test_ajax
 
 app_name="blog"
 urlpatterns = [
@@ -23,6 +23,7 @@ urlpatterns = [
     path('author/<slug:username>', AuthorList.as_view(), name="author"),
     path('author/<slug:username>/page/<int:page>', AuthorList.as_view(), name="author"),
 
+    path('test_ajax', test_ajax, name="test_ajax"),
     #api
     path('', include(router.urls)),
 ]

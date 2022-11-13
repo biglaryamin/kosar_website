@@ -121,3 +121,8 @@ class ArticleViewSet(viewsets.ModelViewSet):
     queryset = Article.objects.all().order_by('-created')
     serializer_class = ArticleSerializer
     # permission_classes = [permissions.IsAuthenticated]
+
+
+
+def test_ajax(request):
+	return render(request, "blog/list_ajax.html")

@@ -41,12 +41,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # main_apps
     'blog.apps.BlogConfig',
     'presentation_app',
     'account.apps.AccountConfig',
     'poll.apps.PollConfig',
     'crawler.apps.CrawlerConfig',
 
+    # 3rd party packages
     'rest_framework',
     'widget_tweaks',
     'crispy_forms',
