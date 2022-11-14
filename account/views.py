@@ -13,6 +13,7 @@ from .models import User
 from .forms import ProfileForm
 from presentation_app.forms import ImageForm, TextForm
 
+from django.contrib import messages
 from rest_framework import viewsets
 from rest_framework import permissions
 from .serializers import UserSerializer
@@ -95,7 +96,8 @@ def edit_mainpage(request):
                 img_obj = img_form.save(commit=False)
                 img_obj.name = "wallpaper1"
                 delete_old_image(img_obj.name)
-                img_obj.save()                
+                img_obj.save()
+                messages.success(request, "File saved" )                
             else:
                 img_form = ImageForm()
         ########################################################################
