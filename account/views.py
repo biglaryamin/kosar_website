@@ -108,7 +108,8 @@ def edit_mainpage(request):
                 img_obj = img_form.save(commit=False)
                 img_obj.name = "wallpaper2"
                 delete_old_image(img_obj.name)
-                img_obj.save()                
+                img_obj.save()
+                messages.success(request, "File saved" )                  
             else:
                 img_form = ImageForm()
         ########################################################################
@@ -119,7 +120,8 @@ def edit_mainpage(request):
                 img_obj = img_form.save(commit=False)
                 img_obj.name = "wallpaper3"
                 delete_old_image(img_obj.name)
-                img_obj.save()                
+                img_obj.save()
+                messages.success(request, "File saved" )                
             else:
                 img_form = ImageForm()
         ########################################################################
@@ -130,7 +132,8 @@ def edit_mainpage(request):
                 img_obj = img_form.save(commit=False)
                 img_obj.name = "wallpaper4"
                 delete_old_image(img_obj.name)
-                img_obj.save()                
+                img_obj.save()
+                messages.success(request, "File saved" )                
             else:
                 img_form = ImageForm()
         ########################################################################
@@ -141,7 +144,8 @@ def edit_mainpage(request):
                 txt_obj = txt_form.save(commit=False)
                 txt_obj.name = "text1"
                 delete_old_text(txt_obj.name)
-                txt_obj.save()                
+                txt_obj.save()         
+                messages.success(request, "Text saved" )                       
             else:
                 txt_form = TextForm()
         ########################################################################
@@ -153,6 +157,7 @@ def edit_mainpage(request):
                 txt_obj.name = "text2"
                 delete_old_text(txt_obj.name)
                 txt_obj.save()                
+                messages.success(request, "Text saved" )                       
             else:
                 txt_form = TextForm()
 
