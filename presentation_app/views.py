@@ -22,7 +22,6 @@ def show_services_detail(request):
 	return render(request , "presentation_blog/services-details.html")
 
 
-
 def show_shop(request):
     return render(request,"presentation_blog/shop.html")
 

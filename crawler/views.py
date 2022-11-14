@@ -9,7 +9,6 @@ from .models import CrawledArticle
 import requests
 from bs4 import BeautifulSoup
 
-
 # importing task from tasks.py file  
 from .tasks import test_func  
     
@@ -19,8 +18,7 @@ def test_celery(request):
     # call the test_function using delay, calling task  
     # test_func()  
     return HttpResponse("Done")  
-
-
+ 
 
 def crawler(url):
     page = requests.get(url)

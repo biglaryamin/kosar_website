@@ -29,7 +29,6 @@ class ArticleList(ListView):
 		return context
 
 
-
 def show_article_detail(request , slug):
 	if request.method == 'POST':
 		MyCommentForm=CommentForm(request.POST or None)
@@ -45,7 +44,6 @@ def show_article_detail(request , slug):
 		"cats":Category.objects.all(),
 	}
 	return render(request , "blog/blog-details.html" , context)
-
 
 
 '''
@@ -79,12 +77,12 @@ class CategoryList(ListView):
 
 class AuthorList(ListView):
 	paginate_by = 3
-	template_name='blog/author_list.html'
+	template_name = 'blog/author_list.html'
 
 	def get_queryset(self):
 		global author
-		username=self.kwargs.get('username')
-		author=get_object_or_404(User, username=username)
+		username = self.kwargs.get('username')
+		author = get_object_or_404(User, username=username)
 		return author.articles.published()
 
 	def get_context_data(self, **kwargs):
@@ -104,7 +102,7 @@ def show_base_page(request):
 def search(request):
 	found_articles = Article.objects.none()
 	if request.method == "POST":
-		input_word=request.POST.get("input_search")
+		input_word = request.POST.get("input_search")
 		found_articles = Article.objects.filter(title__contains = input_word)
 
 	if found_articles:
@@ -113,7 +111,6 @@ def search(request):
 
 
 #api_views
-
 class ArticleViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
@@ -121,7 +118,6 @@ class ArticleViewSet(viewsets.ModelViewSet):
     queryset = Article.objects.all().order_by('-created')
     serializer_class = ArticleSerializer
     # permission_classes = [permissions.IsAuthenticated]
-
 
 
 def test_ajax(request):

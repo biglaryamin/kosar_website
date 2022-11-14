@@ -1,22 +1,22 @@
+import os 
+from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView,CreateView,UpdateView,DeleteView
+from django.urls import reverse_lazy
+from .mixins import FieldsMixin,FormValidMixin,AuthorAccessMixin,SuperUserAccessMixin
+
 from blog.models import Article
 from presentation_app.models import ImageModel, TextModel
-from .mixins import FieldsMixin,FormValidMixin,AuthorAccessMixin,SuperUserAccessMixin
 from .models import User
-from django.urls import reverse_lazy
 from .forms import ProfileForm
+from presentation_app.forms import ImageForm, TextForm
 
 from rest_framework import viewsets
 from rest_framework import permissions
 from .serializers import UserSerializer
 
-from presentation_app.forms import ImageForm, TextForm
-
-from django.conf import settings
-import os 
 
 class ArticlelList(LoginRequiredMixin , ListView):
 #    queryset=Article.objects.all()
@@ -29,18 +29,14 @@ class ArticlelList(LoginRequiredMixin , ListView):
             return Article.objects.filter(author=self.request.user)
 
 
-
-
 class ArticleCreate(LoginRequiredMixin , FormValidMixin , FieldsMixin , CreateView):
     model        =Article
     template_name="registration/article-create-update.html"
 
 
-
 class ArticleUpdate(AuthorAccessMixin , FormValidMixin , FieldsMixin , UpdateView):
     model        =Article
     template_name="registration/article-create-update.html"
-
 
 
 class ArticleDelete(SuperUserAccessMixin , DeleteView):
@@ -50,11 +46,11 @@ class ArticleDelete(SuperUserAccessMixin , DeleteView):
 
 
 class Profile(LoginRequiredMixin ,UpdateView):
-    model         =User
-#    fields       =['username','email','first_name','last_name','special_user','is_author']  do it in forms!
-    template_name ="registration/profile.html"
-    form_class    =ProfileForm
-    success_url   =reverse_lazy("account:profile")
+    model = User
+#    fields = ['username','email','first_name','last_name','special_user','is_author']  do it in forms!
+    template_name = "registration/profile.html"
+    form_class = ProfileForm
+    success_url = reverse_lazy("account:profile")
 
 
     def get_object(self):
@@ -69,7 +65,6 @@ class Profile(LoginRequiredMixin ,UpdateView):
 
 
 # api_views
-
 class UserViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
@@ -87,7 +82,6 @@ def delete_old_image(wallpaper_name):
 def delete_old_text(text_name):
     the_text = TextModel.objects.filter(name=text_name)
     the_text.delete()
-
 
 
 def edit_mainpage(request):
@@ -162,18 +156,3 @@ def edit_mainpage(request):
 
 
     return render(request, "registration/edit_main-page.html", {"img_form":img_form, "TextForm":TextForm})
-
-
-
-
-
-
-
-# Is it useful?
-def save_file(request):
-    if request.method == 'POST':
-        img_form = ImageForm(request.POST or None)
-        if img_form.is_valid():
-            img_form.save()
-
-    return render(request, "registration/edit_main-page.html", {"img_form":img_form})

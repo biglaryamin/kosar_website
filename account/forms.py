@@ -7,7 +7,6 @@ class ProfileForm(forms.ModelForm):
         user = kwargs.pop('user')
         super(ProfileForm,self).__init__(*args,**kwargs)
 
-
         if not user.is_superuser:
             self.fields['username'].disabled = True
             self.fields['email'].disabled = True

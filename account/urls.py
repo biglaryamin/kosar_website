@@ -5,7 +5,7 @@ from .views import ArticlelList,ArticleCreate,ArticleUpdate,ArticleDelete,Profil
 from django.conf.urls.static import static
 from django.conf import settings
 
-from .views import UserViewSet, edit_mainpage, save_file
+from .views import UserViewSet, edit_mainpage
 
 # api import
 from rest_framework import routers
@@ -24,7 +24,6 @@ urlpatterns=[
     path('profile', Profile.as_view(), name="profile"),
     path('', ArticlelList.as_view(), name="home"),
     path('edit_main-page', edit_mainpage, name="edit_main"),
-    path('save_file', save_file, name="save_file"),
 ]
 
 
