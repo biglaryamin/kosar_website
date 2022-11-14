@@ -152,11 +152,21 @@ STATICFILES_DIRS=[
 MEDIA_URL = os.path.join(BASE_DIR, 'media/')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+from django.contrib.messages import constants as messages
+
+MESSAGE_TAGS = {
+        messages.DEBUG: 'alert-secondary',
+        messages.INFO: 'alert-info',
+        messages.SUCCESS: 'alert-success',
+        messages.WARNING: 'alert-warning',
+        messages.ERROR: 'alert-danger',
+ }
+
+
 
 AUTH_USER_MODEL = 'account.User'
-
-
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
@@ -177,4 +187,8 @@ CELERY_TASK_SELERLIZER = 'json'
 CELERY_TIMEZONE = 'Asia/Tehran'
 
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+
+
+
+
 
