@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'widget_tweaks',
     'crispy_forms',
+    'corsheaders',
 
 
     # realted to celery
@@ -69,6 +70,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # 3rd party packages
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'myproject.urls'
@@ -174,6 +178,7 @@ REST_FRAMEWORK = {
 }
 
 
+CORS_ORIGIN_ALLOW_ALL = True   
 
 
 # Celery configs
