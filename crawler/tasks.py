@@ -1,5 +1,12 @@
+# python packages
+import requests
+import re
+
+# python 
+from .models import CrawledArticle
+
 from celery import shared_task  
-    
+from bs4 import BeautifulSoup
 
 
 def crawler(url):
@@ -25,11 +32,27 @@ def remove_extra_letter(url):
     return result
 
 
-
-
 @shared_task()  
 def test_func():  
+    counter = 2
     url = "https://news.ycombinator.com/"
     links = crawler(url)[1]
+    articles = CrawledArticle.objects.all().order_by('-created')
+    local_articles = []
+    for article in articles:
+        local_articles.append(str(article.title))
+        
+    for link in crawler(url)[0]:
+        correct_link = remove_extra_letter(str(links[counter]))
+        try:
+            the_article = CrawledArticle(title=link.text, link = correct_link)
+        except IndexError:
+            the_article = CrawledArticle(title=link.text, link = "index error!")
+        
+        if str(the_article.title) not in local_articles:
+            the_article.save()
 
-    print("------------------hello there----------------")
+        counter += 1
+    
+    articles = CrawledArticle.objects.all().order_by('-created')
+    print(f"******* number of all articles are : {articles.count()} **********")
