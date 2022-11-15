@@ -3,7 +3,6 @@ from .models import Article,Category
 from account.models import User
 from django.views.generic import ListView
 from .forms import CommentForm
-from django.views.generic.edit import CreateView
 
 
 #api
@@ -121,4 +120,4 @@ class ArticleViewSet(viewsets.ModelViewSet):
 
 
 def test_ajax(request):
-	return render(request, "blog/list_ajax.html")
+	return render(request, "blog/article_list_axios.html")
