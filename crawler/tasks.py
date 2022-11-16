@@ -5,6 +5,7 @@ import re
 # python 
 from .models import CrawledArticle
 
+# 3rd party packages
 from celery import shared_task  
 from bs4 import BeautifulSoup
 
@@ -13,16 +14,24 @@ def crawler(url):
     page = requests.get(url)
     soup = BeautifulSoup(page.content, "html.parser")
     titles = soup.select("tr td span.titleline")
-
     temp_links = soup.select("tr td span a")
     links = []
+    sources = []
     for link in temp_links:
         try:
             temp_link = re.findall(r".*href=(.*?)\>", str(link))
             links.append(temp_link)
+            print(link)
+            temp_source = re.findall(r".*\((.*\..*)\)", str(link))
+            sources.append(temp_source)
+
         except:
             pass
 
+
+    # for source in sources:
+    #     print(source)
+    #     print("********************************")
     return (titles, links)
 
 
