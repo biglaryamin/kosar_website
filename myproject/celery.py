@@ -12,7 +12,7 @@ app.config_from_object("django.conf:settings", namespace="CELERY")
 app.conf.beat_schedule = {
     'print-something': {
     'task': 'crawler.tasks.test_func',
-    'schedule': 5.0, # every 5 seconds it will be called
+    'schedule': 20.0, # every 20 seconds it will be called
     #'args': (2,) you can pass arguments also if rquired
     },
 }
